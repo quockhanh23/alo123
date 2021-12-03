@@ -11,9 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-đây là khánh
 
-  day la khanh
-đây là huy
   </body>
 </html>
