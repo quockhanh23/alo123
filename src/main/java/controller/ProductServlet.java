@@ -40,7 +40,7 @@ public class ProductServlet extends HttpServlet {
     private void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productDAO.findById(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/editProduct.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/editProduct.jsp");
         request.setAttribute("aloEdit", product);
         dispatcher.forward(request, response);
     }
@@ -48,13 +48,13 @@ public class ProductServlet extends HttpServlet {
     private void showDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productDAO.findById(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/deleteProduct.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/deleteProduct.jsp");
         request.setAttribute("aloDelete", product);
         dispatcher.forward(request, response);
     }
 
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/createProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/createProduct.jsp");
         requestDispatcher.forward(request, response);
     }
 
@@ -80,6 +80,13 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "deleteProduct":
+                try {
+                    deleteProduct(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
@@ -99,4 +106,10 @@ public class ProductServlet extends HttpServlet {
                 action, capacity, barrel, weight, img, categoryId, quantity));
         response.sendRedirect("/products");
     }
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productDAO.delete(id);
+        response.sendRedirect("/products");
+    }
+
 }

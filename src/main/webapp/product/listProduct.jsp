@@ -20,8 +20,8 @@
 <h2>${cus.id} ${cus.name} ${cus.price} ${cus.description} ${cus.action}
         ${cus.capacity} ${cus.barrel} ${cus.weight} ${cus.img} ${cus.categoryId} ${cus.quantity}
 
-    <a href="/product?action=editProduct&id=${cus.id}">Edit</a>
-    <a href="/product?action=deleteProduct&id=${cus.id}">Delete</a>
+    <a href="/products?action=editProduct&id=${cus.id}">Edit</a>
+    <a href="/products?action=deleteProduct&id=${cus.id}">Delete</a>
     </h2>
     </c:forEach>
 </body>
