@@ -16,7 +16,7 @@
     <input type="text" name="name" value="${aloEdit.name}" placeholder="name product">
     <input type="number" name="price" value="${aloEdit.price}" placeholder="price">
     <input type="text" name="description" value="${aloEdit.description}" placeholder="description">
-    <input type="text" name="action" value="${aloEdit.action}" placeholder="action">
+    <input type="text" name="action1" value="${aloEdit.action}" placeholder="action">
     <input type="text" name="capacity" value="${aloEdit.capacity}" placeholder="capacity">
     <input type="text" name="barrel" value="${aloEdit.barrel}" placeholder="barrel">
     <input type="text" name="weight" value="${aloEdit.weight}" placeholder="weight">

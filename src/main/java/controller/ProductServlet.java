@@ -117,7 +117,7 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         double price = Double.parseDouble(request.getParameter("price"));
         String description = request.getParameter("description");
-        String action = request.getParameter("action");
+        String action1 = request.getParameter("action1");
         String capacity = request.getParameter("capacity");
         String barrel = request.getParameter("barrel");
         String weight = request.getParameter("weight");
@@ -125,7 +125,7 @@ public class ProductServlet extends HttpServlet {
         String categoryId = request.getParameter("categoryId");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         productDAO.add(new Product(id, name, price, description,
-                action, capacity, barrel, weight, img, categoryId, quantity));
+                action1, capacity, barrel, weight, img, categoryId, quantity));
         response.sendRedirect("/products");
     }
 
@@ -140,14 +140,14 @@ public class ProductServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         double price = Double.parseDouble(request.getParameter("price"));
         String description = request.getParameter("description");
-        String action = request.getParameter("action");
+        String action1 = request.getParameter("action1");
         String capacity = request.getParameter("capacity");
         String barrel = request.getParameter("barrel");
         String weight = request.getParameter("weight");
         String img = request.getParameter("img");
         String categoryId = request.getParameter("categoryId");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        Product product = new Product(id,name, price, description, action,
+        Product product = new Product(id,name, price, description, action1,
                 capacity, barrel, weight, img, categoryId, quantity);
         productDAO.update(product);
         response.sendRedirect("/products");

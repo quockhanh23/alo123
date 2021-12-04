@@ -21,12 +21,12 @@
     <button>Find Name Product</button>
 </form>
 <c:forEach var="cus" items="${alo}">
-<h2>${cus.id} ${cus.name} ${cus.price} ${cus.description} ${cus.action}
+<h5>${cus.id} ${cus.name} ${cus.price} ${cus.description} ${cus.action}
         ${cus.capacity} ${cus.barrel} ${cus.weight} ${cus.img} ${cus.categoryId} ${cus.quantity}
 
     <a href="/products?action=editProduct&id=${cus.id}">Edit</a>
     <a href="/products?action=deleteProduct&id=${cus.id}">Delete</a>
-    </h2>
+    </h5>
     </c:forEach>
 </body>
 </html>

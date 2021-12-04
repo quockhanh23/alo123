@@ -17,7 +17,7 @@
     <input type="text" name="name" placeholder="name product">
     <input type="number" name="price" placeholder="price">
     <input type="text" name="description" placeholder="description">
-    <input type="text" name="action" placeholder="action">
+    <input type="text" name="action1" placeholder="action">
     <input type="text" name="capacity" placeholder="capacity">
     <input type="text" name="barrel" placeholder="barrel">
     <input type="text" name="weight" placeholder="weight">
