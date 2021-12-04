@@ -11,6 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-
+  <a href="accounts">Login</a>
   </body>
 </html>
