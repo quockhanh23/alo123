@@ -28,13 +28,19 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 showCreate(request,response);
                 break;
-//            case "delete":
-//                try {
-//                    showDelete(request,response);
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                }
-//                break;
+            case "delete":
+                try {
+                    showDelete(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "edit":
+                try {
+                    showEdit(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             default:
                 try {
                     showList(request, response);
@@ -44,11 +50,19 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-//    private void showDelete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        productService.delete(id);
-//        response.sendRedirect("/products");
-//    }
+    private void showEdit(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/edit.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        request.setAttribute("product", product);
+        requestDispatcher.forward(request, response);
+    }
+
+    private void showDelete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productService.delete(id);
+        response.sendRedirect("/products");
+    }
 
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/create.jsp");

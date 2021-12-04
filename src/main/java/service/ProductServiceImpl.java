@@ -30,7 +30,6 @@ public class ProductServiceImpl implements ProductService {
         List<Product> products = new ArrayList<>();
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("select * from product");) {
-
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -47,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
                 int quantity = rs.getInt("quantity");
                 products.add(new Product(id, name, price, description, action, capacity, barrel, weight, img, categoryId, quantity));
             }
-        } catch (SQLException e) {
+        } catch (SQLException ignored) {
         }
         return products;
     }
