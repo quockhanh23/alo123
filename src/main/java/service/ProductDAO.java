@@ -106,7 +106,26 @@ public class ProductDAO implements IProductDAO {
 
     @Override
     public List<Product> findByName(String name) {
-        return null;
+        List<Product> product = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select * from product where name like ?");) {
+            System.out.println(preparedStatement);
+            preparedStatement.setString(1, "%" + name + "%");
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String name1 = rs.getString("name");
+                    double price = rs.getDouble("price");
+                    String img = rs.getString("img");
+                    product.add(new Product(id, name1, price, img));
+                }
+            }
+        } catch (SQLException ignored) {
+
+        }
+        return product;
     }
 
     @Override
