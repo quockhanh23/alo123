@@ -6,6 +6,11 @@
 </head>
 <body>
 <a href="/products?action=create"> create</a><br>
+<form>
+<input type="text" name="key" placeholder="Enter name you want find?">
+<button style="background: darkorchid"> find</button>
+</form>
+<br>
 <c:forEach items="${products}" var="pt">
     <h5>
             ${pt.id},
@@ -19,7 +24,9 @@
             ${pt.img},
             ${pt.categoryId},
             ${pt.quantity}
-</h5><a href="/products?action=delete&id=${pt.id}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" title="Link Title">delete</a>
+</h5>
+    <a href="/products?action=edit&id=${pt.getId()}"> Edit</a>
+    <a href="/products?action=delete&id=${pt.id}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" title="Link Title">delete</a>
     </h1>
 </c:forEach>
 </body>
