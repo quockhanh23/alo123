@@ -107,7 +107,7 @@ public class ProductServlet extends HttpServlet {
         String barrel = request.getParameter("barrel");
         String weight = request.getParameter("weight");
         String img = request.getParameter("img");
-        String categoryId = request.getParameter("name");
+        String categoryId = request.getParameter("categoryId");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         productDAO.add(new Product(id, name, price, description,
                 action, capacity, barrel, weight, img, categoryId, quantity));
@@ -130,7 +130,7 @@ public class ProductServlet extends HttpServlet {
         String barrel = request.getParameter("barrel");
         String weight = request.getParameter("weight");
         String img = request.getParameter("img");
-        String categoryId = request.getParameter("name");
+        String categoryId = request.getParameter("categoryId");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         Product product = new Product(id,name, price, description, action,
                 capacity, barrel, weight, img, categoryId, quantity);
