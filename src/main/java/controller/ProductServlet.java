@@ -87,6 +87,13 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "editProduct":
+                try {
+                    saveEdit(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
@@ -106,9 +113,28 @@ public class ProductServlet extends HttpServlet {
                 action, capacity, barrel, weight, img, categoryId, quantity));
         response.sendRedirect("/products");
     }
+
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         productDAO.delete(id);
+        response.sendRedirect("/products");
+    }
+
+    private void saveEdit(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        String name = request.getParameter("name");
+        int id = Integer.parseInt(request.getParameter("id"));
+        double price = Double.parseDouble(request.getParameter("price"));
+        String description = request.getParameter("description");
+        String action = request.getParameter("action");
+        String capacity = request.getParameter("capacity");
+        String barrel = request.getParameter("barrel");
+        String weight = request.getParameter("weight");
+        String img = request.getParameter("img");
+        String categoryId = request.getParameter("name");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        Product product = new Product(id,name, price, description, action,
+                capacity, barrel, weight, img, categoryId, quantity);
+        productDAO.update(product);
         response.sendRedirect("/products");
     }
 
