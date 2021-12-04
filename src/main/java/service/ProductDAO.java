@@ -57,8 +57,8 @@ public class ProductDAO implements IProductDAO {
     public void add(Product product) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
-                     ("insert into product(id,name, price,description,action," +
-                             "capacity,barrel,weight,img,categoryId, quantity)  values (?,?,?,?,?,?,?,?,?,?,?) ");) {
+                     ("insert into product(id,name, price,description,action" +
+                             ",capacity,barrel,weight,img,categoryId, quantity)  values (?,?,?,?,?,?,?,?,?,?,?) ")) {
             preparedStatement.setInt(1, product.getId());
             preparedStatement.setString(2, product.getName());
             preparedStatement.setDouble(3, product.getPrice());
@@ -87,6 +87,7 @@ public class ProductDAO implements IProductDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
+                double price = Double.parseDouble(resultSet.getString("price"));
                 String description = resultSet.getString("description");
                 String action = resultSet.getString("action");
                 String capacity = resultSet.getString("capacity");
@@ -94,7 +95,6 @@ public class ProductDAO implements IProductDAO {
                 String weight = resultSet.getString("weight");
                 String img = resultSet.getString("img");
                 String categoryId = resultSet.getString("categoryId");
-                double price = Double.parseDouble(resultSet.getString("price"));
                 int quantity = Integer.parseInt(resultSet.getString("quantity"));
                 product = new Product(id, name, price, description, action,
                         capacity, barrel, weight, img, categoryId, quantity);
@@ -111,7 +111,31 @@ public class ProductDAO implements IProductDAO {
 
     @Override
     public List<Product> orderByName() {
-        return null;
+        List<Product> list = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select * from product order by name");) {
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                double price = rs.getDouble("price");
+                String description = rs.getString("description");
+                String action = rs.getString("action");
+                String capacity = rs.getString("capacity");
+                String barrel = rs.getString("barrel");
+                String weight = rs.getString("weight");
+                String img = rs.getString("img");
+                String categoryId = rs.getString("categoryId");
+                int quantity = rs.getInt("quantity");
+                list.add(new Product(id, name, price, description,
+                        action, capacity, barrel, weight, img, categoryId, quantity));
+            }
+        } catch (SQLException e) {
+            System.out.println("");
+        }
+        return list;
     }
 
     @Override

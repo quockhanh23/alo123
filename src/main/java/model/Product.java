@@ -39,6 +39,20 @@ public class Product {
         this.categoryId = categoryId;
         this.quantity = quantity;
     }
+    public Product(String name, double price, String description, String capacity, String barrel, String weight, String img, String categoryId, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+
+        this.capacity = capacity;
+        this.barrel = barrel;
+        this.weight = weight;
+        this.img = img;
+        this.categoryId = categoryId;
+        this.quantity = quantity;
+    }
+
+
 
     public Product() {
     }

@@ -31,10 +31,19 @@ public class ProductServlet extends HttpServlet {
             case "editProduct":
                 showEdit(request, response);
                 break;
+            case "showListByOrderName":
+                showListByOrderName(request, response);
+                break;
             default:
                 showListProduct(request, response);
                 break;
         }
+    }
+    private void showListByOrderName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/listProduct.jsp");
+        List<Product> products = productDAO.orderByName();
+        request.setAttribute("alo", products);
+        requestDispatcher.forward(request, response);
     }
 
     private void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -137,5 +146,4 @@ public class ProductServlet extends HttpServlet {
         productDAO.update(product);
         response.sendRedirect("/products");
     }
-
 }

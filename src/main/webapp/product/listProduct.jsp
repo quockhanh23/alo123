@@ -13,7 +13,8 @@
 </head>
 <body>
 <h2>List product</h2>
-<a href="/products?action=createProduct">create new product</a>
+<a href="/products?action=createProduct">Create new product</a>
+<a href="/products?action=showListByOrderName">Sort by name</a>
 </h2>
 
 <c:forEach var="cus" items="${alo}">
