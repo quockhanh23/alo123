@@ -11,6 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-
+  <a href="/products"> product</a>
   </body>
 </html>
