@@ -47,9 +47,9 @@ public class CartDAO implements ICartDAO {
     public void add(Cart cart) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
-                     ("insert into cart(id, accountId)  values (?,?) ");) {
+                     ("insert into cart(id, accountId)  values (?,?) ")) {
             preparedStatement.setInt(1, cart.getId());
-            preparedStatement.setInt(1, cart.getAccountId());
+            preparedStatement.setInt(2, cart.getAccountId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error");

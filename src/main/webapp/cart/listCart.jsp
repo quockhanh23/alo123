@@ -12,6 +12,7 @@
     <title>Title</title>
 </head>
 <body>
+<a href="/carts?action=createCart">create new cart</a>
 <c:forEach var="cus" items="${alo}">
 <h2>${cus.id} ${cus.accountId}</h2>
 </c:forEach>

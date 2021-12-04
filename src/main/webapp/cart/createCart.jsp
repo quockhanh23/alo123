@@ -11,6 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-
+<h2>From create</h2>
+<form method="post">
+    <input type="number" name="id">
+    <input type="number" name="accountId">
+    <button>Create</button>
+</form>
 </body>
 </html>
