@@ -29,7 +29,29 @@ public class CartServlet extends HttpServlet {
             case "createCart":
                 showCreate(request, response);
                 break;
+            case "editCart":
+                showEdit(request, response);
+                break;
+            case "deleteCart":
+                showDelete(request, response);
+                break;
         }
+    }
+
+    private void showDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Cart cart = cartDAO.findById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/cart/deleteCart.jsp");
+        request.setAttribute("aloDelete", cart);
+        dispatcher.forward(request, response);
+    }
+
+    private void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Cart cart = cartDAO.findById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/cart/editCart.jsp");
+        request.setAttribute("aloEdit", cart);
+        dispatcher.forward(request, response);
     }
 
     private void showListCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,7 +81,35 @@ public class CartServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "editCart":
+                try {
+                    saveEdit(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "deleteCart":
+                try {
+                    deleteCart(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
+    }
+
+    private void deleteCart(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        cartDAO.delete(id);
+        response.sendRedirect("/carts");
+    }
+
+    private void saveEdit(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int acc = Integer.parseInt(request.getParameter("accountId"));
+        Cart cart = new Cart(id, acc);
+        cartDAO.update(cart);
+        response.sendRedirect("/carts");
     }
 
     private void createCart(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {

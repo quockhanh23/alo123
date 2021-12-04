@@ -14,7 +14,10 @@
 <body>
 <a href="/carts?action=createCart">create new cart</a>
 <c:forEach var="cus" items="${alo}">
-<h2>${cus.id} ${cus.accountId}</h2>
+<h2>${cus.id} ${cus.accountId}
+    <a href="/carts?action=editCart&id=${cus.id}">Edit</a>
+    <a href="/carts?action=deleteCart&id=${cus.id}">Delete</a>
+</h2>
 </c:forEach>
 </body>
 </html>
