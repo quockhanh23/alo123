@@ -5,11 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fce0690-be2e-4a90-bdb8-de3c92723a47" name="Changes" comment="demo1">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/demo.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/demo.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/demo.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/demo.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +53,8 @@
       <option name="presentableId" value="Default" />
       <updated>1638525165842</updated>
       <workItem from="1638525168702" duration="2081000" />
-      <workItem from="1638600636233" duration="491000" />
+      <workItem from="1638600636233" duration="1489000" />
+      <workItem from="1638602154822" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="demo">
       <created>1638526736105</created>
