@@ -5,8 +5,25 @@
     <title>Title</title>
 </head>
 <body>
+<a href="/products?action=create"> create</a><br>
 <c:forEach items="${products}" var="pt">
-    <h1>${pt.id},${pt.name},${pt.price},${pt.description},${pt.action},${pt.capacity},${pt.barrel},${pt.weight},${pt.img},${pt.categoryId},${pt.quantity}</h1>
+    <h5>
+            ${pt.id},
+            ${pt.name},
+            ${pt.price},
+            ${pt.description},
+            ${pt.action},
+            ${pt.capacity},
+            ${pt.barrel},
+            ${pt.weight},
+            ${pt.img},
+            ${pt.categoryId},
+            ${pt.quantity}
+</h5>
+<%--    <a href="/products?action=delete&id=${product.id}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" title="Link Title">--%>
+<%--    delete--%>
+<%--</a>--%>
+    </h1>
 </c:forEach>
 </body>
 </html>

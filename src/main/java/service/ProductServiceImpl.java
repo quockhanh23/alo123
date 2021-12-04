@@ -128,7 +128,7 @@ public class ProductServiceImpl implements ProductService {
     public void edit(Product product) throws SQLException {
         try (
                 Connection connection = getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("update product set name=?,price=?,description=?,action=?,capacity=?,barrel=?,weight=?,img=?,categoryId=?,quantity=? where id=?");) {
+                PreparedStatement preparedStatement = connection.prepareStatement("update product set name=?,price=?,description=?,action=?,capacity=?,barrel=?,weight=?,img=?,categoryId=?,quangtity=? where id=?");) {
             preparedStatement.setString(1, product.getName());
             preparedStatement.setDouble(2, product.getPrice());
             preparedStatement.setString(3, product.getDescription());
