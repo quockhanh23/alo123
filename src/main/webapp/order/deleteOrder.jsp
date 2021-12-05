@@ -9,15 +9,52 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        button {
+            background: #0f3b62;
+            color: whitesmoke;
+            border: none;
+            font-size: 25px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: 0.3s;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        button:hover {
+            transform: scale(1.2);
+        }
+
+        body {
+            background: #1b6d85;
+            color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
-<form method="post">
-    <h1>Delete form information</h1>
-    <h3>ID: ${aloDelete.id}</h3>
-    <h3>Account ID:  ${aloDelete.accountId}</h3>
-    <h3>Time: ${aloDelete.time}</h3>
-    <h3>Status: ${aloDelete.status}</h3>
-    <button>Delete</button>
-</form>
+<h2 style="text-align: center">Delete form information</h2>
+<div align="center">
+    <form method="post">
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Id Product</th>
+                <td>${aloDelete.id}</td>
+            </tr>
+            <tr>
+                <th>Account Id</th>
+                <td>${aloDelete.accountId}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>${aloDelete.time}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>${aloDelete.status}</td>
+            </tr>
+        </table>
+        <button>Delete</button>
+        <button><a style="text-decoration: none; color: whitesmoke" href="/orders">Back to list order</a></button>
+    </form>
+</div>
 </body>
 </html>

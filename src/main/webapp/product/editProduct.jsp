@@ -41,62 +41,62 @@
                 <th>Enter Name</th>
                 <td><input id="1" onmouseover="changeColor1()" onmouseout="changeColor2()" type="text"
                            onfocus="this.value=''"
-                           name="name" value="${aloEdit.name}" placeholder="name product"></td>
+                           name="name" value="${aloEdit.name}" placeholder="Name product"></td>
             </tr>
             <tr>
                 <th>Enter Price</th>
                 <td><input id="2" onmouseover="changeColor1()" onmouseout="changeColor2()" type="number"
                            onfocus="this.value=''"
-                           name="price" value="${aloEdit.price}" placeholder="price"></td>
+                           name="price" value="${aloEdit.price}" placeholder="Price"></td>
             </tr>
             <tr>
                 <th>Enter Description</th>
                 <td>
                     <input id="3" onmouseover="changeColor1()" onmouseout="changeColor2()" type="text"
                            onfocus="this.value=''"
-                           name="description" value="${aloEdit.description}" placeholder="description"></td>
+                           name="description" value="${aloEdit.description}" placeholder="Description"></td>
             </tr>
             <tr>
                 <th>Enter Action</th>
                 <td><input id="4" onmouseover="changeColor1()" onmouseout="changeColor2()" type="text"
                            onfocus="this.value=''"
-                           name="action1" value="${aloEdit.action}" placeholder="action"></td>
+                           name="action1" value="${aloEdit.action}" placeholder="Action"></td>
             </tr>
             <tr>
                 <th>Enter Capacity</th>
                 <td><input id="5" onmouseover="changeColor1()" onmouseout="changeColor2()" type="text"
                            onfocus="this.value=''"
-                           name="capacity" value="${aloEdit.capacity}" placeholder="capacity"></td>
+                           name="capacity" value="${aloEdit.capacity}" placeholder="Capacity"></td>
             </tr>
             <tr>
                 <th>Enter Barrel</th>
                 <td><input id="6" onmouseover="changeColor1()" onmouseout="changeColor2()" type="text"
                            onfocus="this.value=''"
-                           name="barrel" value="${aloEdit.barrel}" placeholder="barrel"></td>
+                           name="barrel" value="${aloEdit.barrel}" placeholder="Barrel"></td>
             </tr>
             <tr>
                 <th>Enter weight</th>
                 <td><input id="7" onmouseover="changeColor1()" onmouseout="changeColor2()" type="text"
                            onfocus="this.value=''"
-                           name="weight" value="${aloEdit.weight}" placeholder="weight"></td>
+                           name="weight" value="${aloEdit.weight}" placeholder="Weight"></td>
             </tr>
             <tr>
                 <th>Enter Image</th>
                 <td><input id="8" onmouseover="changeColor1()" onmouseout="changeColor2()" type="text"
                            onfocus="this.value=''"
-                           name="img" value="${aloEdit.img}" placeholder="img"></td>
+                           name="img" value="${aloEdit.img}" placeholder="Image"></td>
             </tr>
             <tr>
                 <th>Enter Category Id</th>
                 <td><input id="9" onmouseover="changeColor1()" onmouseout="changeColor2()" type="text"
                            onfocus="this.value=''"
-                           name="categoryId" value="${aloEdit.categoryId}" placeholder="category Id"></td>
+                           name="categoryId" value="${aloEdit.categoryId}" placeholder="Category Id"></td>
             </tr>
             <tr>
                 <th>Enter Quantity</th>
                 <td><input id="10" onmouseover="changeColor1()" onmouseout="changeColor2()" type="number"
                            onfocus="this.value=''"
-                           name="quantity" value="${aloEdit.quantity}" placeholder="quantity"></td>
+                           name="quantity" value="${aloEdit.quantity}" placeholder="Quantity"></td>
             </tr>
         </table>
         <button>Edit</button>
