@@ -16,6 +16,7 @@
 <a href="/orders?action=createOrder">Create new order</a>
 <c:forEach var="cus" items="${alo}">
     <h4>${cus.id} ${cus.accountId} ${cus.time}${cus.status}
+        <a href="/orders?action=editOrder&id=${cus.id}">Edit</a>
         <a href="/orders?action=deleteOrder&id=${cus.id}">Delete</a>
     </h4>
 </c:forEach>

@@ -1,5 +1,6 @@
 package controller;
 
+import model.Cart;
 import model.Order;
 import service.IOrderDAO;
 import service.OrderDAO;
@@ -31,8 +32,19 @@ public class OrderServlet extends HttpServlet {
             case "deleteOrder":
                 showDelete(request, response);
                 break;
+            case "editOrder":
+                showEdit(request, response);
+                break;
 
         }
+    }
+
+    private void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Order order = orderDAO.findById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/order/editOrder.jsp");
+        request.setAttribute("aloEdit", order);
+        dispatcher.forward(request, response);
     }
 
     private void showDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -77,7 +89,24 @@ public class OrderServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "editOrder":
+                try {
+                    saveEdit(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
+    }
+
+    private void saveEdit(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int acc = Integer.parseInt(request.getParameter("accountId"));
+        String time = request.getParameter("time");
+        int status = Integer.parseInt(request.getParameter("status"));
+        Order order = new Order(id, acc, time, status);
+        orderDAO.update(order);
+        response.sendRedirect("/orders");
     }
 
     private void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
