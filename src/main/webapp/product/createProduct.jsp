@@ -83,6 +83,7 @@
                 </tr>
             </table>
             <button>Create</button>
+            <button><a style="text-decoration: none; color: whitesmoke" href="/products">Back to list product</a></button>
         </form>
     </div>
 </form>

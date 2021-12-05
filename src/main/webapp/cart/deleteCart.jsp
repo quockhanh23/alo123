@@ -37,7 +37,7 @@
         <div id="1">
             <table border="1" cellpadding="5">
                 <tr>
-                    <th><h3>Id</h3></th>
+                    <th><h3>Id Cart</h3></th>
                     <td><h3>${aloDelete.id}</h3></td>
                 </tr>
                 <tr>
@@ -47,6 +47,7 @@
             </table>
         </div>
       <div id="2"><button>Delete</button></div>
+        <div><button><a style="text-decoration: none; color: whitesmoke" href="/carts">Back to list cart</a></button></div>
     </form>
 </div>
 </body>

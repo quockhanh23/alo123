@@ -36,7 +36,7 @@
     <form method="post">
         <table border="1" cellpadding="5">
             <tr>
-                <th>Id Product</th>
+                <th>Id Order</th>
                 <td>${aloDelete.id}</td>
             </tr>
             <tr>
