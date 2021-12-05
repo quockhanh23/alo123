@@ -9,22 +9,75 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        button {
+            background: #0f3b62;
+            color: whitesmoke;
+            border: none;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+        body {
+            background: #1b6d85;
+            color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
-<h2>From create</h2>
 <form method="post">
-    <input type="number" name="id" placeholder="id">
-    <input type="text" name="name" placeholder="name product">
-    <input type="number" name="price" placeholder="price">
-    <input type="text" name="description" placeholder="description">
-    <input type="text" name="action1" placeholder="action">
-    <input type="text" name="capacity" placeholder="capacity">
-    <input type="text" name="barrel" placeholder="barrel">
-    <input type="text" name="weight" placeholder="weight">
-    <input type="text" name="img" placeholder="img">
-    <input type="text" name="categoryId" placeholder="category Id">
-    <input type="number" name="quantity" placeholder="quantity">
-    <button>Create</button>
+    <h2 style="text-align: center">From Create</h2>
+    <div align="center">
+        <form method="post">
+            <table border="1" cellpadding="5">
+                <tr>
+                    <th>Enter Id</th>
+                    <td><input type="number" name="id" placeholder="id"></td>
+                </tr>
+                <tr>
+                    <th>Enter Name</th>
+                    <td><input type="text" name="name" placeholder="name product"></td>
+                </tr>
+                <tr>
+                    <th>Enter Price</th>
+                    <td><input type="number" name="price" placeholder="price"></td>
+                </tr>
+                <tr>
+                    <th>Enter Description</th>
+                    <td><input type="text" name="description" placeholder="description"></td>
+                </tr>
+                <tr>
+                    <th>Enter Action</th>
+                    <td><input type="text" name="action1" placeholder="action"></td>
+                </tr>
+                <tr>
+                    <th>Enter Capacity</th>
+                    <td><input type="text" name="capacity" placeholder="capacity"></td>
+                </tr>
+                <tr>
+                    <th>Enter Barrel</th>
+                    <td><input type="text" name="barrel" placeholder="barrel"></td>
+                </tr>
+                <tr>
+                    <th>Enter Weight</th>
+                    <td><input type="text" name="weight" placeholder=""></td>
+                </tr>
+                <tr>
+                    <th>Enter Image</th>
+                    <td><input type="text" name="img" placeholder="img"></td>
+                </tr>
+                <tr>
+                    <th>Enter Category Id</th>
+                    <td><input type="text" name="categoryId" placeholder="category Id"></td>
+                </tr>
+                <tr>
+                    <th>Enter Quantity</th>
+                    <td><input type="number" name="quantity" placeholder="quantity"></td>
+                </tr>
+            </table>
+            <button>Create</button>
+        </form>
+    </div>
 </form>
 </body>
 </html>

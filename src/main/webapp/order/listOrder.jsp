@@ -13,6 +13,7 @@
 </head>
 <body>
 <h2>List Order</h2>
+<div align="center">
 <a href="/orders?action=createOrder">Create new order</a>
 <c:forEach var="cus" items="${alo}">
     <h4>${cus.id} ${cus.accountId} ${cus.time}${cus.status}
@@ -20,5 +21,6 @@
         <a href="/orders?action=deleteOrder&id=${cus.id}">Delete</a>
     </h4>
 </c:forEach>
+</div>
 </body>
 </html>
