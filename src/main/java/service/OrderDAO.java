@@ -49,7 +49,17 @@ public class OrderDAO implements IOrderDAO {
 
     @Override
     public void add(Order order) throws SQLException {
-
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("insert into orderofcustomer(id, accountId, time, status )  values (?,?,?,?) ")) {
+            preparedStatement.setInt(1, order.getId());
+            preparedStatement.setInt(2, order.getAccountId());
+            preparedStatement.setString(3, order.getTime());
+            preparedStatement.setInt(4, order.getStatus());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("error");
+        }
     }
 
     @Override

@@ -13,6 +13,7 @@
 </head>
 <body>
 <h2>List Order</h2>
+<a href="/orders?action=createOrder">Create new order</a>
 <c:forEach var="cus" items="${alo}">
     <h5>${cus.id} ${cus.accountId} ${cus.time}${cus.status}
     </h5>
