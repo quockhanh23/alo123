@@ -10,8 +10,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/895ce18e-2cf9-45f2-a516-2c72e3cf2547.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/895ce18e-2cf9-45f2-a516-2c72e3cf2547.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/AccountServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/AccountServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/Account.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/demo-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/demo-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProductServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/account/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/account/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account/signup.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +42,14 @@
         <projects_view />
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Jsp File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -172,6 +189,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638525165842</updated>
       <workItem from="1638525168702" duration="2081000" />
+      <workItem from="1638689339418" duration="13196000" />
     </task>
     <task id="LOCAL-00001" summary="demo">
       <created>1638526736105</created>
@@ -216,5 +234,16 @@
     <MESSAGE value="demo" />
     <MESSAGE value="demo1" />
     <option name="LAST_COMMIT_MESSAGE" value="demo1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/service/AccountDAO.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -5,6 +5,7 @@
   Time: 2:43 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -54,8 +55,18 @@
                 <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                <li><a href="/accounts"><i class="fa fa-user-o"></i> Login</a></li>
+                <c:if test="${sessionScope.acc != null}">
+                    <li><a href="#"><i class="fa fa-dollar"></i> Wallet: ${sessionScope.acc.balance}</a></li>
+                    <li><a href="#"><i class="fa fa-user-o"></i> Hello ${sessionScope.acc.name}</a></li>
+                    <c:if test="${sessionScope.acc.roleId == 1}">
+                    <li><a href="/products?action=showBoard"><i class="fa fa-user-o"></i> Manager</a></li>
+                    </c:if>
+                    <li><a href="/accounts?action=logout"><i class="fa"></i> Logout</a></li>
+                </c:if>
+                <c:if test="${sessionScope.acc == null}">
+                    <li><a href="#"><i class="fa fa-user-o"></i> Guest</a></li>
+                    <li><a href="/accounts?action=login"><i class="fa"></i> Login</a></li>
+                </c:if>
             </ul>
         </div>
     </div>
