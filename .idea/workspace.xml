@@ -12,12 +12,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/demo-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/demo-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/createCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart/createCart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/deleteCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart/deleteCart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/order/createOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/order/createOrder.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/order/deleteOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/order/deleteOrder.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product/createProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product/createProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product/editProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product/editProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/product/deleteProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product/deleteProduct.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
