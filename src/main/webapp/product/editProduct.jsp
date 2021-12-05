@@ -32,7 +32,7 @@
     </style>
 </head>
 <body>
-<h2 style="text-align: center">From Edit</h2>
+<div style="background: #2e6da4"><h2 style="text-align: center">Edit Form</h2></div>
 <div align="center">
     <form method="post">
         <table border="1" cellpadding="5">
@@ -117,7 +117,6 @@
         document.getElementById('8').style.background = "yellow";
         document.getElementById('9').style.background = "yellow";
         document.getElementById('10').style.background = "yellow";
-
     }
 
     function changeColor2() {

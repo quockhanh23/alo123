@@ -31,7 +31,7 @@
     </style>
 </head>
 <body>
-<h2 style="text-align: center">Delete form information</h2>
+<div style="background: #2e6da4"><h2 style="text-align: center">Delete Form information</h2></div>
 <div align="center">
     <form method="post">
         <table border="1" cellpadding="5">
