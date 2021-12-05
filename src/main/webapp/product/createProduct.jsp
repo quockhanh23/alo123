@@ -14,8 +14,15 @@
             background: #0f3b62;
             color: whitesmoke;
             border: none;
-            font-size: 20px;
+            font-size: 25px;
             border-radius: 5px;
+            margin-top: 10px;
+            transition: 0.3s;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        button:hover {
+            transform: scale(1.2);
         }
 
         body {
@@ -32,47 +39,47 @@
             <table border="1" cellpadding="5">
                 <tr>
                     <th>Enter Id</th>
-                    <td><input type="number" name="id" placeholder="id"></td>
+                    <td><input type="number" name="id" placeholder="Id"></td>
                 </tr>
                 <tr>
                     <th>Enter Name</th>
-                    <td><input type="text" name="name" placeholder="name product"></td>
+                    <td><input type="text" name="name" placeholder="Name product"></td>
                 </tr>
                 <tr>
                     <th>Enter Price</th>
-                    <td><input type="number" name="price" placeholder="price"></td>
+                    <td><input type="number" name="price" placeholder="Price"></td>
                 </tr>
                 <tr>
                     <th>Enter Description</th>
-                    <td><input type="text" name="description" placeholder="description"></td>
+                    <td><input type="text" name="description" placeholder="Description"></td>
                 </tr>
                 <tr>
                     <th>Enter Action</th>
-                    <td><input type="text" name="action1" placeholder="action"></td>
+                    <td><input type="text" name="action1" placeholder="Action"></td>
                 </tr>
                 <tr>
                     <th>Enter Capacity</th>
-                    <td><input type="text" name="capacity" placeholder="capacity"></td>
+                    <td><input type="text" name="capacity" placeholder="Capacity"></td>
                 </tr>
                 <tr>
                     <th>Enter Barrel</th>
-                    <td><input type="text" name="barrel" placeholder="barrel"></td>
+                    <td><input type="text" name="barrel" placeholder="Barrel"></td>
                 </tr>
                 <tr>
                     <th>Enter Weight</th>
-                    <td><input type="text" name="weight" placeholder=""></td>
+                    <td><input type="text" name="weight" placeholder="Weight"></td>
                 </tr>
                 <tr>
                     <th>Enter Image</th>
-                    <td><input type="text" name="img" placeholder="img"></td>
+                    <td><input type="text" name="img" placeholder="Image"></td>
                 </tr>
                 <tr>
                     <th>Enter Category Id</th>
-                    <td><input type="text" name="categoryId" placeholder="category Id"></td>
+                    <td><input type="text" name="categoryId" placeholder="Category Id"></td>
                 </tr>
                 <tr>
                     <th>Enter Quantity</th>
-                    <td><input type="number" name="quantity" placeholder="quantity"></td>
+                    <td><input type="number" name="quantity" placeholder="Quantity"></td>
                 </tr>
             </table>
             <button>Create</button>

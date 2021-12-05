@@ -9,13 +9,45 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        button {
+            background: #0f3b62;
+            color: whitesmoke;
+            border: none;
+            font-size: 25px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: 0.3s;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        button:hover {
+            transform: scale(1.2);
+        }
+
+        body {
+            background: #1b6d85;
+            color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
-<form method="post">
-    <h1>Delete form information</h1>
-    <h3>${aloDelete.id}</h3>
-    <h3>${aloDelete.accountId}</h3>
-    <button>Delete</button>
-</form>
+<h2 style="text-align: center">Delete form information</h2>
+<div align="center">
+    <form method="post">
+        <div id="1">
+            <table border="1" cellpadding="5">
+                <tr>
+                    <th><h3>Id</h3></th>
+                    <td><h3>${aloDelete.id}</h3></td>
+                </tr>
+                <tr>
+                    <th><h3> Account</h3></th>
+                    <td><h3>${aloDelete.accountId}</h3></td>
+                </tr>
+            </table>
+        </div>
+      <div id="2"><button>Delete</button></div>
+    </form>
+</div>
 </body>
 </html>

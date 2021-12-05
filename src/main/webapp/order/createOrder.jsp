@@ -14,8 +14,14 @@
             background: #0f3b62;
             color: whitesmoke;
             border: none;
-            font-size: 20px;
+            font-size: 25px;
             border-radius: 5px;
+            margin-top: 10px;
+            transition: 0.3s;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        button:hover {
+            transform: scale(1.2);
         }
 
         body {
