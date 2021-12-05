@@ -15,12 +15,6 @@ public class Product {
 
     public Product() {
     }
-    public Product(int id, String name, double price,String img) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.img = img;
-    }
 
     public Product(int id, String name, double price, String description, String action, String capacity, String barrel, String weight, String img, String categoryId, int quatity) {
         this.id = id;
