@@ -12,7 +12,7 @@
 </head>
 <body>
 <form method="post">
-    <h1>Delete form</h1>
+    <h1>Delete form information</h1>
     <h3>${aloDelete.id}</h3>
     <h3>${aloDelete.name}</h3>
     <h3>${aloDelete.price}</h3>

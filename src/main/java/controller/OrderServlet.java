@@ -1,8 +1,6 @@
 package controller;
 
-import model.Cart;
 import model.Order;
-import model.Product;
 import service.IOrderDAO;
 import service.OrderDAO;
 
@@ -30,15 +28,25 @@ public class OrderServlet extends HttpServlet {
             case "createOrder":
                 showCreate(request, response);
                 break;
+            case "deleteOrder":
+                showDelete(request, response);
+                break;
 
         }
+    }
+
+    private void showDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Order order = orderDAO.findById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/order/deleteOrder.jsp");
+        request.setAttribute("aloDelete", order);
+        dispatcher.forward(request, response);
     }
 
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("order/createOrder.jsp");
         requestDispatcher.forward(request, response);
     }
-
 
     private void showListOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("order/listOrder.jsp");
@@ -62,7 +70,20 @@ public class OrderServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "deleteOrder":
+                try {
+                    deleteOrder(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
+    }
+
+    private void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        orderDAO.delete(id);
+        response.sendRedirect("/orders");
     }
 
     private void createOrder(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {

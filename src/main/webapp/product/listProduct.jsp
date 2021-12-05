@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<h2>List product</h2>
+<h2>List Product</h2>
 <a href="/products?action=createProduct">Create new product</a>
 <a href="/products?action=showListByOrderName">Sort by name</a>
 </h2>
@@ -21,12 +21,12 @@
     <button>Find Name Product</button>
 </form>
 <c:forEach var="cus" items="${alo}">
-<h5>${cus.id} ${cus.name} ${cus.price} ${cus.description} ${cus.action}
+<h4>${cus.id} ${cus.name} ${cus.price} ${cus.description} ${cus.action}
         ${cus.capacity} ${cus.barrel} ${cus.weight} ${cus.img} ${cus.categoryId} ${cus.quantity}
 
     <a href="/products?action=editProduct&id=${cus.id}">Edit</a>
     <a href="/products?action=deleteProduct&id=${cus.id}">Delete</a>
-    </h5>
+    </h4>
     </c:forEach>
 </body>
 </html>

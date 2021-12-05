@@ -1,7 +1,7 @@
 package service;
 
+import model.Cart;
 import model.Order;
-import model.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -64,16 +64,50 @@ public class OrderDAO implements IOrderDAO {
 
     @Override
     public boolean delete(int id) throws SQLException {
-        return false;
+        boolean rowDeleted;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("delete from orderofcustomer where id = ?;")) {
+            preparedStatement.setInt(1, id);
+            rowDeleted = preparedStatement.executeUpdate() > 0;
+        }
+        return rowDeleted;
     }
 
     @Override
     public boolean update(Order order) throws SQLException {
-        return false;
+        boolean rowUpdated;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("update orderofcustomer set accountId =?,time=?,status=? where id = ?;")) {
+            preparedStatement.setInt(1, order.getAccountId());
+            preparedStatement.setString(2, order.getTime());
+            preparedStatement.setInt(3, order.getStatus());
+            preparedStatement.setInt(4, order.getId());
+            rowUpdated = preparedStatement.executeUpdate() > 0;
+        }
+        return rowUpdated;
     }
 
     @Override
     public Order findById(int id) {
-        return null;
+        Order order = null;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select * from orderofcustomer where id =?")) {
+            System.out.println(preparedStatement);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id1 = Integer.parseInt(resultSet.getString("id"));
+                int acc = Integer.parseInt(resultSet.getString("accountId"));
+                String time = resultSet.getString("time");
+                int stt = Integer.parseInt(resultSet.getString("status"));
+                order = new Order(id1, acc, time, stt);
+            }
+        } catch (SQLException ignored) {
+        }
+        return order;
     }
 }
+
