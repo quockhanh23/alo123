@@ -34,18 +34,13 @@ public class ProductServlet extends HttpServlet {
             case "showListByOrderName":
                 showListByOrderName(request, response);
                 break;
-            case "showBoard":
-                showBoard(request,response);
-                break;
             default:
                 showListProduct(request, response);
                 break;
         }
     }
 
-    private void showBoard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/product/managerProduct.jsp").forward(request,response);
-    }
+
 
     private void showListByOrderName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/listProduct.jsp");
