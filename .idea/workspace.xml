@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fce0690-be2e-4a90-bdb8-de3c92723a47" name="Changes" comment="demo1">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/demo.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/demo.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/demo.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/demo.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4fce0690-be2e-4a90-bdb8-de3c92723a47" name="Changes" comment="update NQK">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/895ce18e-2cf9-45f2-a516-2c72e3cf2547.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/895ce18e-2cf9-45f2-a516-2c72e3cf2547.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +19,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -33,8 +29,17 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="ProjectId" id="21loj0pKwdgheGswP0XRa7Z0KTN" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
