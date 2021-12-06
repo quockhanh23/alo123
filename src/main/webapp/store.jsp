@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Asus VivoBook
-  Date: 12/6/2021
-  Time: 8:36 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -14,28 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
     <title>Electro - HTML Ecommerce Template</title>
-
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
-
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="css/slick.css"/>
     <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
-
     <!-- nouislider -->
     <link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
-
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
-
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -364,8 +350,7 @@
                             <div class="product-body">
                                 <p class="product-category">${cus.categoryId}</p>
                                 <h3 class="product-name"><a href="#">${cus.name}</a></h3>
-                                <h4 class="product-price">${cus.price}
-                                    <del class="product-old-price">${cus.price}</del>
+                                <h4 class="product-price">${cus.price}$
                                 </h4>
                             </div>
                         </div>
@@ -413,31 +398,14 @@
                                 <div class="product-img">
                                     <img src="./img/product01.png" alt="">
                                     <div class="product-label">
-                                        <span class="sale">-30%</span>
                                         <span class="new">NEW</span>
                                     </div>
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">${cus.categoryId}</p>
                                     <h3 class="product-name"><a href="#">${cus.name} </a></h3>
-                                    <h4 class="product-price">${cus.price}
-                                        <del class="product-old-price">${cus.price}/del>
+                                    <h4 class="product-price">${cus.price}$
                                     </h4>
-                                    <div class="product-rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <div class="product-btns">
-                                        <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                class="tooltipp">add to wishlist</span></button>
-                                        <button class="add-to-compare"><i class="fa fa-exchange"></i><span
-                                                class="tooltipp">add to compare</span></button>
-                                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span>
-                                        </button>
-                                    </div>
                                 </div>
                                 <div class="add-to-cart">
                                     <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart
