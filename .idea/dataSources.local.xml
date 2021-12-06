@@ -10,7 +10,14 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
+<<<<<<< HEAD
           <node kind="schema" qname="quanlybansung" />
+=======
+          <node kind="schema">
+            <name qname="@" />
+            <name qname="quanlybansung" />
+          </node>
+>>>>>>> da70810430070ba0237708fc392d6a0bfc604fc6
         </introspection-scope>
       </schema-mapping>
     </data-source>
