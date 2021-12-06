@@ -186,6 +186,35 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
+    public List<Product> findByPrice(int price) {
+        List<Product> list = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select * from product where price < ?")) {
+            System.out.println(preparedStatement);
+            preparedStatement.setInt(1, price);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = Integer.parseInt(resultSet.getString("id"));
+                String name = resultSet.getString("name");
+                double price1 = Double.parseDouble(resultSet.getString("price"));
+                String description = resultSet.getString("description");
+                String action = resultSet.getString("action");
+                String capacity = resultSet.getString("capacity");
+                String barrel = resultSet.getString("barrel");
+                String weight = resultSet.getString("weight");
+                String img = resultSet.getString("img");
+                String categoryId = resultSet.getString("categoryId");
+                int quantity = Integer.parseInt(resultSet.getString("quantity"));
+                list.add(new Product(id, name, price1, description, action,
+                        capacity, barrel, weight, img, categoryId, quantity));
+            }
+        } catch (SQLException ignored) {
+        }
+        return list;
+    }
+
+    @Override
     public List<Product> orderByName() {
         List<Product> list = new ArrayList<>();
         try (Connection connection = getConnection();

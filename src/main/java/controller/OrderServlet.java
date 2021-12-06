@@ -35,7 +35,6 @@ public class OrderServlet extends HttpServlet {
             case "editOrder":
                 showEdit(request, response);
                 break;
-
         }
     }
 

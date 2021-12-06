@@ -18,6 +18,8 @@ public interface IProductDAO {
 
     List<Product> findByName(String name);
 
+    List<Product> findByPrice(int price);
+
     List<Product> orderByName();
 
     boolean delete(int id) throws SQLException;
