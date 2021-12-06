@@ -73,7 +73,7 @@
                 <div class="col-md-3">
                     <div class="header-logo">
                         <a href="#" class="logo">
-                            <img src="../img/logo.png" alt="">
+                            <img width="80px" height="80px" src="./img/logo1.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div class="product-preview">
-                        <img src="../img/product01.png" alt="">
+                        <img src="../img/${alo1.img}" alt="">
                     </div>
                 </div>
             </div>
@@ -237,7 +237,7 @@
             <div class="col-md-2  col-md-pull-5">
                 <div id="product-imgs">
                     <div class="product-preview">
-                        <img src="../img/product01.png" alt="">
+                        <img src="../img/${alo1.img}" alt="">
                     </div>
                 </div>
             </div>
@@ -517,7 +517,7 @@
             <div class="col-md-3 col-xs-6">
                 <div class="product">
                     <div class="product-img">
-                        <img src="../img/product01.png" alt="">
+                        <img width="262px" height="262px" src="../img/${product.img}" alt="">
                         <div class="product-label">
 
                         </div>

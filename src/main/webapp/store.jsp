@@ -28,7 +28,12 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style>
+        .product img{
+            width: 262px;
+            height: 262px;
+        }
+    </style>
 </head>
 <body>
 <!-- HEADER -->
@@ -41,9 +46,23 @@
                 <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
                 <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
             </ul>
+<%--            <ul class="header-links pull-right">--%>
+<%--                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>--%>
+<%--                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>--%>
+<%--            </ul>--%>
             <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                <c:if test="${sessionScope.acc != null}">
+                    <li><a href="#"><i class="fa fa-dollar"></i> Wallet: ${sessionScope.acc.balance}</a></li>
+                    <li><a href="#"><i class="fa fa-user-o"></i> Hello ${sessionScope.acc.name}</a></li>
+                    <c:if test="${sessionScope.acc.roleId == 1}">
+                        <li><a href="/manager1"><i class="fa fa-user-o"></i> Manager</a></li>
+                    </c:if>
+                    <li><a href="/accounts?action=logout"><i class="fa"></i> Logout</a></li>
+                </c:if>
+                <c:if test="${sessionScope.acc == null}">
+                    <li><a href="#"><i class="fa fa-user-o"></i> Guest</a></li>
+                    <li><a href="/accounts?action=login"><i class="fa"></i> Login</a></li>
+                </c:if>
             </ul>
         </div>
     </div>
@@ -59,7 +78,7 @@
                 <div class="col-md-3">
                     <div class="header-logo">
                         <a href="#" class="logo">
-                            <img src="./img/logo.png" alt="">
+                            <img width="80px" height="80px" src="./img/logo1.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -69,11 +88,11 @@
                 <div class="col-md-6">
                     <div class="header-search">
                         <form>
-                            <select class="input-select">
-                                <option value="0">All Categories</option>
-                                <option value="1">Category 01</option>
-                                <option value="1">Category 02</option>
-                            </select>
+<%--                            <select class="input-select">--%>
+<%--                                <option value="0">All Categories</option>--%>
+<%--                                <option value="1">Category 01</option>--%>
+<%--                                <option value="1">Category 02</option>--%>
+<%--                            </select>--%>
                             <input class="input" placeholder="Search here">
                             <button class="search-btn">Search</button>
                         </form>
@@ -106,7 +125,7 @@
                                     <c:forEach var="cus" items="${alo}">
                                         <div class="product-widget">
                                             <div class="product-img">
-                                                <img src="./img/product01.png" alt="">
+                                                <img src="./img/${cus.img}" alt="">
                                             </div>
                                             <div class="product-body">
                                                 <h3 class="product-name"><a href="">${cus.name}</a></h3>
@@ -341,11 +360,11 @@
 
                 <!-- aside Widget -->
                 <div class="aside">
-                    <h3 class="aside-title">Top selling</h3>
+                    <h3 class="aside-title">New Product</h3>
                     <c:forEach var="cus" items="${alo1}">
                         <div class="product-widget">
                             <div class="product-img">
-                                <img src="./img/product01.png" alt="">
+                                <img src="./img/${cus.img}" alt="">
                             </div>
                             <div class="product-body">
                                 <p class="product-category">${cus.categoryId}</p>
@@ -364,29 +383,29 @@
             <!-- STORE -->
             <div id="store" class="col-md-9">
                 <!-- store top filter -->
-                <div class="store-filter clearfix">
-                    <div class="store-sort">
-                        <label>
-                            Sort By:
-                            <select class="input-select">
-                                <option value="0">Popular</option>
-                                <option value="1">Position</option>
-                            </select>
-                        </label>
+<%--                <div class="store-filter clearfix">--%>
+<%--                    <div class="store-sort">--%>
+<%--                        <label>--%>
+<%--                            Sort By:--%>
+<%--                            <select class="input-select">--%>
+<%--                                <option value="0">Popular</option>--%>
+<%--                                <option value="1">Position</option>--%>
+<%--                            </select>--%>
+<%--                        </label>--%>
 
-                        <label>
-                            Show:
-                            <select class="input-select">
-                                <option value="0">20</option>
-                                <option value="1">50</option>
-                            </select>
-                        </label>
-                    </div>
-                    <ul class="store-grid">
-                        <li class="active"><i class="fa fa-th"></i></li>
-                        <li><a href="#"><i class="fa fa-th-list"></i></a></li>
-                    </ul>
-                </div>
+<%--                        <label>--%>
+<%--                            Show:--%>
+<%--                            <select class="input-select">--%>
+<%--                                <option value="0">20</option>--%>
+<%--                                <option value="1">50</option>--%>
+<%--                            </select>--%>
+<%--                        </label>--%>
+<%--                    </div>--%>
+<%--                    <ul class="store-grid">--%>
+<%--                        <li class="active"><i class="fa fa-th"></i></li>--%>
+<%--                        <li><a href="#"><i class="fa fa-th-list"></i></a></li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
                 <!-- /store top filter -->
 
                 <!-- store products -->
@@ -396,9 +415,9 @@
                         <div class="col-md-4 col-xs-6">
                             <div class="product">
                                 <div class="product-img">
-                                    <img src="./img/product01.png" alt="">
+                                    <img src="./img/${cus.img}" alt="">
                                     <div class="product-label">
-                                        <span class="new">NEW</span>
+                                        <span class="new">Hot!</span>
                                     </div>
                                 </div>
                                 <div class="product-body">
@@ -559,13 +578,13 @@
                         <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
                         <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
                     </ul>
-                    <span class="copyright">
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
-                            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                                                                target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							</span>
+<%--                    <span class="copyright">--%>
+<%--								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--%>
+<%--								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i--%>
+<%--                            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"--%>
+<%--                                                                                target="_blank">Colorlib</a>--%>
+<%--                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--%>
+<%--							</span>--%>
                 </div>
             </div>
             <!-- /row -->
