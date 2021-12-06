@@ -43,7 +43,6 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-
     private void showView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/viewProduct.jsp");
         int id = Integer.parseInt(request.getParameter("id"));

@@ -341,7 +341,7 @@
 
                 <!-- aside Widget -->
                 <div class="aside">
-                    <h3 class="aside-title">Top selling</h3>
+                    <h3 class="aside-title">Recent Product</h3>
                     <c:forEach var="cus" items="${alo1}">
                         <div class="product-widget">
                             <div class="product-img">

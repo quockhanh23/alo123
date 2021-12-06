@@ -1,5 +1,6 @@
 package service;
 
+import model.Comment;
 import model.Product;
 
 import java.sql.*;
@@ -173,16 +174,13 @@ public class ProductDAO implements IProductDAO {
             preparedStatement.setString(1, "%" + name + "%");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                while (rs.next()) {
-                    int id = rs.getInt("id");
-                    String name1 = rs.getString("name");
-                    double price = rs.getDouble("price");
-                    String img = rs.getString("img");
-                    product.add(new Product(id, name1, price, img));
-                }
+                int id = rs.getInt("id");
+                String name1 = rs.getString("name");
+                double price = rs.getDouble("price");
+                String img = rs.getString("img");
+                product.add(new Product(id, name1, price, img));
             }
         } catch (SQLException ignored) {
-
         }
         return product;
     }
@@ -234,7 +232,7 @@ public class ProductDAO implements IProductDAO {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
                      ("update product set name =?, price=?,description=?,action=?," +
-                             "capacity=?,barrel=?,weight=?,img=?,categoryId=?, quantity=? where id = ? ");) {
+                             "capacity=?,barrel=?,weight=?,img=?,categoryId=?, quantity=? where id = ? ")) {
             preparedStatement.setInt(11, product.getId());
             preparedStatement.setString(1, product.getName());
             preparedStatement.setDouble(2, product.getPrice());
