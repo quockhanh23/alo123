@@ -40,8 +40,6 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-
-
     private void showListByOrderName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/listProduct.jsp");
         List<Product> products = productDAO.orderByName();
@@ -71,15 +69,19 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/listProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("store.jsp");
         String key = request.getParameter("key");
         List<Product> products;
+        List<Product> products1;
         if (key == null) {
             products = productDAO.findAll();
+            products1 = productDAO.findRecentProduct();
         } else {
             products = productDAO.findByName(key);
+            products1 = productDAO.findRecentProduct();
         }
         request.setAttribute("alo", products);
+        request.setAttribute("alo1", products1);
         requestDispatcher.forward(request, response);
     }
 

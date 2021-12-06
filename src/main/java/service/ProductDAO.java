@@ -54,6 +54,35 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
+    public List<Product> findRecentProduct() {
+        List<Product> list = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select * from product order by id desc limit 3;")) {
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                double price = rs.getDouble("price");
+                String description = rs.getString("description");
+                String action = rs.getString("action");
+                String capacity = rs.getString("capacity");
+                String barrel = rs.getString("barrel");
+                String weight = rs.getString("weight");
+                String img = rs.getString("img");
+                String categoryId = rs.getString("categoryId");
+                int quantity = rs.getInt("quantity");
+                list.add(new Product(id, name, price, description,
+                        action, capacity, barrel, weight, img, categoryId, quantity));
+            }
+        } catch (SQLException e) {
+            System.out.println("");
+        }
+        return list;
+    }
+
+    @Override
     public void add(Product product) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
