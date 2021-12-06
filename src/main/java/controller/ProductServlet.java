@@ -34,10 +34,24 @@ public class ProductServlet extends HttpServlet {
             case "showListByOrderName":
                 showListByOrderName(request, response);
                 break;
+            case "viewProduct":
+                showView(request, response);
+                break;
             default:
                 showListProduct(request, response);
                 break;
         }
+    }
+
+
+    private void showView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/viewProduct.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productDAO.findById(id);
+        request.setAttribute("alo1", product);
+        List<Product> products = productDAO.findRelatedProducts(product.getCategoryId());
+        request.setAttribute("alo2", products);
+        requestDispatcher.forward(request, response);
     }
 
     private void showListByOrderName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
