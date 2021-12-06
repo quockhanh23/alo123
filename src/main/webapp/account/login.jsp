@@ -91,7 +91,7 @@
         .forgot {
             text-decoration: underline
         }
-        #signup{
+        #signup ,#submit1{
             border: 0;
             background: none;
             display: block;
@@ -106,7 +106,7 @@
             cursor: pointer;
             text-decoration: none;
         }
-        #signup:hover{
+        #signup:hover ,#submit1:hover{
             background: #2ecc71
         }
 
@@ -117,13 +117,15 @@
     <div class="row">
         <div class="col-md-6 ">
             <div class="card box">
-                <form onsubmit="event.preventDefault()" >
+                <form method="post">
                     <h1>Login</h1>
+                    <h3 style="color: white">${mess}</h3>
+                    <h3 style="color: white">${resultSignup}</h3>
                     <p class="text-muted"> Please enter your login and password!</p>
-                    <input type="text" name="" placeholder="Username">
-                    <input type="password" name="" placeholder="Password">
+                    <input type="text" name="name2" placeholder="Username">
+                    <input type="password" name="pass2" placeholder="Password">
 <%--                    <a class="forgot text-muted" href="#">Forgot password?</a>--%>
-                    <input type="submit" name="" value="Login" href="#">
+                    <button id="submit1">Login</button>
                 </form>
                 <a style="text-decoration: none" href="/accounts?action=signup"><button id="signup">Signup</button></a>
             </div>
