@@ -15,6 +15,8 @@
 <a href="/comments?action=createComment">Create new</a>
 <c:forEach var="cus" items="${alo}">
    <h4>${cus.id} ${cus.accountId} ${cus.productId} ${cus.content}${cus.orderId}
+       <a href="/comments?action=editComment&id=${cus.id}">Edit</a>
+       <a href="/comments?action=deleteComment&id=${cus.id}">Delete</a>
     </h4>
 </c:forEach>
     </body>

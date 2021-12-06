@@ -18,6 +18,13 @@ public class Comment {
         this.orderId = orderId;
     }
 
+    public Comment(int accountId, int productId, String content, int orderId) {
+        this.accountId = accountId;
+        this.productId = productId;
+        this.content = content;
+        this.orderId = orderId;
+    }
+
     public int getId() {
         return id;
     }
