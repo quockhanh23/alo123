@@ -51,7 +51,7 @@ public class CommentDAO implements ICommentDAO {
         List<Comment> list = new ArrayList<>();
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
-                     ("select * from commit where productId =?")) {
+                     ("select * from comment where productId =?")) {
             System.out.println(preparedStatement);
             preparedStatement.setInt(1, idProduct);
             ResultSet rs = preparedStatement.executeQuery();
@@ -120,7 +120,7 @@ public class CommentDAO implements ICommentDAO {
         Comment comment = null;
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
-                     ("select * from comment where accountId =?")) {
+                     ("select * from comment where Id =?")) {
             System.out.println(preparedStatement);
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
