@@ -172,6 +172,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638525165842</updated>
       <workItem from="1638525168702" duration="2081000" />
+      <workItem from="1638721306320" duration="338000" />
     </task>
     <task id="LOCAL-00001" summary="demo">
       <created>1638526736105</created>
@@ -211,7 +212,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/nqk" />
+                        <option value="nqk" />
                       </list>
                     </value>
                   </entry>
