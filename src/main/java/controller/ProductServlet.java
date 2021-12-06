@@ -40,6 +40,8 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
+
+
     private void showListByOrderName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/listProduct.jsp");
         List<Product> products = productDAO.orderByName();

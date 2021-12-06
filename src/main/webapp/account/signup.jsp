@@ -44,8 +44,9 @@
         .box input[type="text"],
         .box input[type="password"],
         .box input[type="tel"],
-        .box input[type="email"]{
-            border: 0;
+        .box input[type="email"],
+        .box input[type="number"]{
+            /*border: 0;*/
             background: none;
             display: block;
             margin: 20px auto;
@@ -68,7 +69,8 @@
         .box input[type="text"]:focus,
         .box input[type="password"]:focus,
         .box input[type="tel"]:focus,
-        .box input[type="email"]:focus{
+        .box input[type="email"]:focus,
+        .box input[type="number"]:focus{
             width: 300px;
             border-color: #2ecc71
         }
@@ -95,7 +97,7 @@
         .forgot {
             text-decoration: underline
         }
-        #signup{
+        #signup ,#submit1{
             border: 0;
             background: none;
             display: block;
@@ -110,7 +112,7 @@
             cursor: pointer;
             text-decoration: none;
         }
-        #signup:hover{
+        #signup:hover ,#submit1:hover{
             background: #2ecc71
         }
 
@@ -121,17 +123,19 @@
     <div class="row">
         <div class="col-md-6 ">
             <div class="card box">
-                <form onsubmit="event.preventDefault()" >
+                <form method="post" >
                     <h1>Signup</h1>
                     <p class="text-muted"> Create your account!</p>
-                    <input type="text" name="" placeholder="Username">
-                    <input type="password" name="" placeholder="Password">
-                    <input type="password" name="" placeholder="Re-Password">
-                    <input type="tel" name="" placeholder="PhoneNumber">
-                    <input type="email" name="" placeholder="email">
-                    <input type="text" name="" placeholder="address">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="pass" placeholder="Password">
+                    <input type="password" name="repass" placeholder="Re-Password">
+                    <input type="tel" name="tel" placeholder="PhoneNumber">
+                    <input type="email" name="email" placeholder="email">
+                    <input type="text" name="address" placeholder="address">
+                    <input type="text" name="age" placeholder="age">
                     <%--                    <a class="forgot text-muted" href="#">Forgot password?</a>--%>
-                    <input type="submit" name="" value="Signup" href="#">
+<%--                    <input type="submit" name="" value="Signup" href="#">--%>
+                    <button id="submit1">Signup</button>
                 </form>
             </div>
         </div>
