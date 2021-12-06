@@ -285,21 +285,15 @@
                         <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
 <%--                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>--%>
                             <form action="/manager1">
-                                <input type="text" name="key">
+                                <input type="text" name="key" size="28px">
                                 <button class="btn btn-success">Find Product</button>
                             </form>
                     </div>
                 </div>
             </div>
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover" border="1" >
                 <thead>
                 <tr>
-<%--                    <th>--%>
-<%--							<span class="custom-checkbox">--%>
-<%--								<input type="checkbox" id="selectAll">--%>
-<%--								<label for="selectAll"></label>--%>
-<%--							</span>--%>
-<%--                    </th>--%>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Category</th>
@@ -321,84 +315,8 @@
                     </td>
                 </tr>
                 </c:forEach>
-<%--                <tr>--%>
-<%--&lt;%&ndash;                    <td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;							<span class="custom-checkbox">&ndash;%&gt;--%>
-<%--&lt;%&ndash;								<input type="checkbox" id="checkbox2" name="options[]" value="1">&ndash;%&gt;--%>
-<%--&lt;%&ndash;								<label for="checkbox2"></label>&ndash;%&gt;--%>
-<%--&lt;%&ndash;							</span>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    </td>&ndash;%&gt;--%>
-<%--                    <td>Dominique Perrier</td>--%>
-<%--                    <td>dominiqueperrier@mail.com</td>--%>
-<%--                    <td>Obere Str. 57, Berlin, Germany</td>--%>
-<%--                    <td>(313) 555-5735</td>--%>
-<%--                    <td>--%>
-<%--                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>--%>
-<%--                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--%>
-<%--                    </td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--&lt;%&ndash;                    <td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;							<span class="custom-checkbox">&ndash;%&gt;--%>
-<%--&lt;%&ndash;								<input type="checkbox" id="checkbox3" name="options[]" value="1">&ndash;%&gt;--%>
-<%--&lt;%&ndash;								<label for="checkbox3"></label>&ndash;%&gt;--%>
-<%--&lt;%&ndash;							</span>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    </td>&ndash;%&gt;--%>
-<%--                    <td>Maria Anders</td>--%>
-<%--                    <td>mariaanders@mail.com</td>--%>
-<%--                    <td>25, rue Lauriston, Paris, France</td>--%>
-<%--                    <td>(503) 555-9931</td>--%>
-<%--                    <td>--%>
-<%--                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>--%>
-<%--                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--%>
-<%--                    </td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--&lt;%&ndash;                    <td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;							<span class="custom-checkbox">&ndash;%&gt;--%>
-<%--&lt;%&ndash;								<input type="checkbox" id="checkbox4" name="options[]" value="1">&ndash;%&gt;--%>
-<%--&lt;%&ndash;								<label for="checkbox4"></label>&ndash;%&gt;--%>
-<%--&lt;%&ndash;							</span>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    </td>&ndash;%&gt;--%>
-<%--                    <td>Fran Wilson</td>--%>
-<%--                    <td>franwilson@mail.com</td>--%>
-<%--                    <td>C/ Araquil, 67, Madrid, Spain</td>--%>
-<%--                    <td>(204) 619-5731</td>--%>
-<%--                    <td>--%>
-<%--                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>--%>
-<%--                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--%>
-<%--                    </td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--&lt;%&ndash;                    <td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;							<span class="custom-checkbox">&ndash;%&gt;--%>
-<%--&lt;%&ndash;								<input type="checkbox" id="checkbox5" name="options[]" value="1">&ndash;%&gt;--%>
-<%--&lt;%&ndash;								<label for="checkbox5"></label>&ndash;%&gt;--%>
-<%--&lt;%&ndash;							</span>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    </td>&ndash;%&gt;--%>
-<%--                    <td>Martin Blank</td>--%>
-<%--                    <td>martinblank@mail.com</td>--%>
-<%--                    <td>Via Monte Bianco 34, Turin, Italy</td>--%>
-<%--                    <td>(480) 631-2097</td>--%>
-<%--                    <td>--%>
-<%--                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>--%>
-<%--                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--%>
-<%--                    </td>--%>
-<%--                </tr>--%>
                 </tbody>
             </table>
-<%--            <div class="clearfix">--%>
-<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-<%--                <ul class="pagination">--%>
-<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
         </div>
     </div>
 </div>

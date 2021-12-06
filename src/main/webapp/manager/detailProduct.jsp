@@ -286,7 +286,7 @@
                         <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
                         <%--                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>--%>
                         <form action="/manager1">
-                            <input type="text" name="key">
+                            <input type="text" name="key" size="28px">
                             <button class="btn btn-success">Find Product</button>
                         </form>
                     </div>
@@ -348,40 +348,7 @@
                     </td>
                 </tr>
                 </tbody>
-<%--                <thead>--%>
-<%--                <tr>--%>
-<%--                    <th>Name</th>--%>
-<%--                    <th>Price</th>--%>
-<%--                    <th>Description</th>--%>
-<%--                    <th>Action</th>--%>
-<%--                    <th>Capacity</th>--%>
-<%--                    <th>Barrel</th>--%>
-<%--                    <th>Weight</th>--%>
-<%--                    <th>Image</th>--%>
-<%--                    <th>Category</th>--%>
-<%--                    <th>Quantity</th>--%>
-<%--                    <th>Actions</th>--%>
-<%--                </tr>--%>
-<%--                </thead>--%>
-<%--                <tbody>--%>
-<%--                    <tr>--%>
-<%--                        <td>${productFound.name}</td>--%>
-<%--                        <td>${productFound.price}$</td>--%>
-<%--                        <td>${productFound.description}</td>--%>
-<%--                        <td>${productFound.action}</td>--%>
-<%--                        <td>${productFound.capacity}</td>--%>
-<%--                        <td>${productFound.barrel}</td>--%>
-<%--                        <td>${productFound.weight}</td>--%>
-<%--                        <td>${productFound.img}</td>--%>
-<%--                        <td>${productFound.categoryId}</td>--%>
-<%--                        <td>${productFound.quantity}</td>--%>
-<%--                        <td>--%>
-<%--                                &lt;%&ndash;                        data-toggle="modal"&ndash;%&gt;--%>
-<%--                            <a href="/manager1?action=edit&id=${product.id}" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Edit</a>--%>
-<%--                            <a onclick="return confirm('Are you sure?')" href="/manager1?action=delete&id=${product.id}" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>--%>
-<%--                        </td>--%>
-<%--                    </tr>--%>
-<%--                </tbody>--%>
+
             </table>
 
         </div>
