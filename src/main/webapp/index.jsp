@@ -59,7 +59,7 @@
                     <li><a href="#"><i class="fa fa-dollar"></i> Wallet: ${sessionScope.acc.balance}</a></li>
                     <li><a href="#"><i class="fa fa-user-o"></i> Hello ${sessionScope.acc.name}</a></li>
                     <c:if test="${sessionScope.acc.roleId == 1}">
-                    <li><a href="/manager"><i class="fa fa-user-o"></i> Manager</a></li>
+                    <li><a href="/manager1"><i class="fa fa-user-o"></i> Manager</a></li>
                     </c:if>
                     <li><a href="/accounts?action=logout"><i class="fa"></i> Logout</a></li>
                 </c:if>

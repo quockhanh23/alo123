@@ -57,19 +57,18 @@ public class ProductDAO implements IProductDAO {
     public void add(Product product) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
-                     ("insert into product(id,name, price,description,action" +
-                             ",capacity,barrel,weight,img,categoryId, quantity)  values (?,?,?,?,?,?,?,?,?,?,?) ")) {
-            preparedStatement.setInt(1, product.getId());
-            preparedStatement.setString(2, product.getName());
-            preparedStatement.setDouble(3, product.getPrice());
-            preparedStatement.setString(4, product.getDescription());
-            preparedStatement.setString(5, product.getAction());
-            preparedStatement.setString(6, product.getCapacity());
-            preparedStatement.setString(7, product.getBarrel());
-            preparedStatement.setString(8, product.getWeight());
-            preparedStatement.setString(9, product.getImg());
-            preparedStatement.setString(10, product.getCategoryId());
-            preparedStatement.setInt(11, product.getQuantity());
+                     ("insert into product(name, price,description,action" +
+                             ",capacity,barrel,weight,img,categoryId, quantity)  values (?,?,?,?,?,?,?,?,?,?) ")) {
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setDouble(2, product.getPrice());
+            preparedStatement.setString(3, product.getDescription());
+            preparedStatement.setString(4, product.getAction());
+            preparedStatement.setString(5, product.getCapacity());
+            preparedStatement.setString(6, product.getBarrel());
+            preparedStatement.setString(7, product.getWeight());
+            preparedStatement.setString(8, product.getImg());
+            preparedStatement.setString(9, product.getCategoryId());
+            preparedStatement.setInt(10, product.getQuantity());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error");
