@@ -9,7 +9,7 @@ public class Account {
     private String email;
     private String address;
     private int roleId;
-    private double balance ;
+    private double balance;
     private int statusId;
     private int age;
 

@@ -35,6 +35,9 @@ public class ProductServlet extends HttpServlet {
             case "showListByOrderName":
                 showListByOrderName(request, response);
                 break;
+            case "viewProduct":
+                showView(request, response);
+                break;
             default:
                 showListProduct(request, response);
                 break;
@@ -47,6 +50,15 @@ public class ProductServlet extends HttpServlet {
         response.sendRedirect("/manager1");
     }
 
+    private void showView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/viewProduct.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productDAO.findById(id);
+        request.setAttribute("alo1", product);
+        List<Product> products = productDAO.findRelatedProducts(product.getCategoryId());
+        request.setAttribute("alo2", products);
+        requestDispatcher.forward(request, response);
+    }
 
     private void showListByOrderName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/listProduct.jsp");
@@ -77,15 +89,19 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/listProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("store.jsp");
         String key = request.getParameter("key");
         List<Product> products;
+        List<Product> products1;
         if (key == null) {
             products = productDAO.findAll();
+            products1 = productDAO.findRecentProduct();
         } else {
             products = productDAO.findByName(key);
+            products1 = productDAO.findRecentProduct();
         }
         request.setAttribute("alo", products);
+        request.setAttribute("alo1", products1);
         requestDispatcher.forward(request, response);
     }
 
