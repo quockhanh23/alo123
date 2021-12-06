@@ -9,13 +9,44 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        button {
+            background: #0f3b62;
+            color: whitesmoke;
+            border: none;
+            font-size: 25px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: 0.3s;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        button:hover {
+            transform: scale(1.2);
+        }
+
+        body {
+            background: #1b6d85;
+            color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
-<h2>From create</h2>
-<form method="post">
-    <input type="number" name="id">
-    <input type="number" name="accountId">
-    <button>Create</button>
-</form>
+<div style="background: #2e6da4"><h2 style="text-align: center">Create Form</h2></div>
+<div align="center">
+    <form method="post">
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Enter Id</th>
+                <td><input type="number" name="id"></td>
+            </tr>
+            <tr>
+                <th>Enter Id Account</th>
+                <td><input type="number" name="accountId"></td>
+            </tr>
+        </table>
+        <button>Create</button>
+        <button><a style="text-decoration: none; color: whitesmoke" href="/carts">Back to list cart</a></button>
+    </form>
+</div>
 </body>
 </html>

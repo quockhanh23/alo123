@@ -28,6 +28,7 @@ public class ProductServlet extends HttpServlet {
             case "deleteProduct":
                 showDelete(request, response);
                 break;
+
             case "editProduct":
                 showEdit(request, response);
                 break;
@@ -40,6 +41,11 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
+    private void delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productDAO.delete(id);
+        response.sendRedirect("/manager1");
+    }
 
 
     private void showListByOrderName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
