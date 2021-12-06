@@ -111,15 +111,21 @@ public class ProductDAO implements IProductDAO {
                      ("select * from product where name like ?");) {
             System.out.println(preparedStatement);
             preparedStatement.setString(1, "%" + name + "%");
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                while (rs.next()) {
-                    int id = rs.getInt("id");
-                    String name1 = rs.getString("name");
-                    double price = rs.getDouble("price");
-                    String img = rs.getString("img");
-                    product.add(new Product(id, name1, price, img));
-                }
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name1 = resultSet.getString("name");
+                double price = resultSet.getDouble("price");
+                String description = resultSet.getString("description");
+                String action = resultSet.getString("action");
+                String capacity = resultSet.getString("capacity");
+                String barrel = resultSet.getString("barrel");
+                String weight = resultSet.getString("weight");
+                String img = resultSet.getString("img");
+                String categoryId = resultSet.getString("categoryId");
+                int quantity = Integer.parseInt(resultSet.getString("quantity"));
+                product.add(new Product(id, name1, price, description, action,
+                        capacity, barrel, weight, img, categoryId, quantity));
             }
         } catch (SQLException ignored) {
 

@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: susu
@@ -6,6 +6,7 @@
   Time: 6:09 CH
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -309,12 +310,13 @@
                 <tbody>
                 <c:forEach var="product" items="${products}">
                 <tr>
-                    <td>${product.name}</td>
-                    <td>${product.price}</td>
+                    <td><a href="/manager1?action=view&id=${product.id}">${product.name}</a></td>
+                    <td>${product.price}$</td>
                     <td>${product.categoryId}</td>
                     <td>${product.quantity}</td>
                     <td>
-                        <a href="/manager1?action=edit&id=${product.id}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Edit</a>
+<%--                        data-toggle="modal"--%>
+                        <a href="/manager1?action=edit&id=${product.id}" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Edit</a>
                         <a onclick="return confirm('Are you sure?')" href="/manager1?action=delete&id=${product.id}" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
                     </td>
                 </tr>
