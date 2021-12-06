@@ -12,11 +12,13 @@ public interface ICommentDAO {
 
     List<Comment> CommentOfProduct(int idProduct);
 
+    List<Comment> CommentOfAccount(int idAccount);
+
     void add(Comment comment) throws SQLException;
 
     boolean delete(int id) throws SQLException;
 
     boolean update(Comment comment) throws SQLException;
 
-    public Comment findById(int id);
+    Comment findById(int id);
 }

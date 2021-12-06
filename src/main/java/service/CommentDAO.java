@@ -70,6 +70,28 @@ public class CommentDAO implements ICommentDAO {
     }
 
     @Override
+    public List<Comment> CommentOfAccount(int idAccount) {
+        List<Comment> list = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select * from comment where accountId = ?;")) {
+            System.out.println(preparedStatement);
+            preparedStatement.setInt(1, idAccount);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id1 = rs.getInt("id");
+                int accountId = rs.getInt("accountId");
+                int productId = rs.getInt("productId");
+                String content = rs.getString("content");
+                int orderId = rs.getInt("orderId");
+                list.add(new Comment(id1, accountId, productId, content, orderId));
+            }
+        } catch (SQLException ignored) {
+        }
+        return list;
+    }
+
+    @Override
     public void add(Comment comment) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement

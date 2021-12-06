@@ -15,7 +15,7 @@ public interface ICartDAO {
 
     boolean update(Cart cart) throws SQLException;
 
-    public Cart findById(int id);
+    Cart findById(int id);
 
 
 }

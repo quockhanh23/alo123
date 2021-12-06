@@ -8,7 +8,7 @@ import java.util.List;
 public interface IProductDAO {
     List<Product> findAll();
 
-   List<Product> findRelatedProducts(String categoryId1);
+    List<Product> findRelatedProducts(String categoryId1);
 
     List<Product> findRecentProduct();
 

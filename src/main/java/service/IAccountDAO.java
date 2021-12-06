@@ -1,7 +1,6 @@
 package service;
 
 
-
 import model.Account;
 
 import java.sql.SQLException;
@@ -16,5 +15,5 @@ public interface IAccountDAO {
 
     boolean update(Account account) throws SQLException;
 
-    public Account findById(int id);
+    Account findById(int id);
 }

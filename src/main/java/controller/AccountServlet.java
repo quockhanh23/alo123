@@ -36,7 +36,7 @@ public class AccountServlet extends HttpServlet {
     private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("acc");
-        request.getRequestDispatcher("index1.jsp").forward(request,response);
+        request.getRequestDispatcher("index.jsp").forward(request,response);
     }
 
     private void showSignup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -79,7 +79,7 @@ public class AccountServlet extends HttpServlet {
         int age = Integer.parseInt(request.getParameter("age"));
         this.accountDAO.add(new Account(1,name1,password,rePass,phoneNum,email,address,2,0,1,age));
 //        request.setAttribute("resultSignup","Signup success");
-       response.sendRedirect("index1.jsp");
+       response.sendRedirect("index.jsp");
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -92,7 +92,7 @@ public class AccountServlet extends HttpServlet {
         }else {
             HttpSession session = request.getSession();
             session.setAttribute("acc",account);
-            request.getRequestDispatcher("index1.jsp").forward(request,response);
+            request.getRequestDispatcher("index.jsp").forward(request,response);
         }
     }
 }

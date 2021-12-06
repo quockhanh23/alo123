@@ -15,6 +15,6 @@ public interface IOrderDAO {
 
     boolean update(Order order) throws SQLException;
 
-    public Order findById(int id);
+    Order findById(int id);
 
 }
