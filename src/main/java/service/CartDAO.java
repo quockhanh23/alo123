@@ -1,6 +1,7 @@
 package service;
 
 import model.Cart;
+import model.CartDetail;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,7 +24,25 @@ public class CartDAO implements ICartDAO {
         }
         return connection;
     }
-
+    @Override
+    public List<CartDetail> findDetailById(int id){
+        List<CartDetail> details =new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select * from cartdetail where cartId = ?")) {
+            System.out.println(preparedStatement);
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int cartId = resultSet.getInt("cartId");
+                int productId = resultSet.getInt("productId");
+                int quantity = resultSet.getInt("quantity");
+                details.add(new CartDetail(cartId,productId,quantity));
+            }
+        } catch (SQLException e) {
+        }
+        return details;
+    }
     @Override
     public List<Cart> findAll() {
         List<Cart> list = new ArrayList<>();

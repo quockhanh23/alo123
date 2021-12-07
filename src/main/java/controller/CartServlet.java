@@ -1,8 +1,9 @@
 package controller;
 
-import model.Cart;
-import model.Product;
+import model.*;
+import service.AccountDAO;
 import service.CartDAO;
+import service.IAccountDAO;
 import service.ICartDAO;
 
 import javax.servlet.*;
@@ -15,7 +16,7 @@ import java.util.List;
 @WebServlet(name = "CartServlet", value = "/carts")
 public class CartServlet extends HttpServlet {
     private ICartDAO cartDAO = new CartDAO();
-
+    private IAccountDAO accountDAO = new AccountDAO();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -23,9 +24,6 @@ public class CartServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            default:
-                showListCart(request, response);
-                break;
             case "createCart":
                 showCreate(request, response);
                 break;
@@ -35,7 +33,27 @@ public class CartServlet extends HttpServlet {
             case "deleteCart":
                 showDelete(request, response);
                 break;
+            case "showCusCart":
+                showCart(request,response);
+                break;
+            default:
+                showListCart(request, response);
+                break;
         }
+    }
+
+    private void showCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+        if (account == null){
+            response.sendRedirect("/accounts");
+        }else {
+            int id = account.getId();
+            List<CartDetail> details = cartDAO.findDetailById(id);
+            session.setAttribute("cartDetails",details);
+            request.getRequestDispatcher("cart/customerCart.jsp").forward(request,response);
+        }
+
     }
 
     private void showDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

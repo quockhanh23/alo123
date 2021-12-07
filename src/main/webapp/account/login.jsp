@@ -117,7 +117,7 @@
     <div class="row">
         <div class="col-md-6 ">
             <div class="card box">
-                <form method="post">
+                <form method="post" action="/accounts?action=login">
                     <h1>Login</h1>
                     <h3 style="color: white">${mess}</h3>
                     <h3 style="color: white">${resultSignup}</h3>

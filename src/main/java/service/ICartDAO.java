@@ -1,6 +1,7 @@
 package service;
 
 import model.Cart;
+import model.CartDetail;
 import model.Product;
 
 import java.sql.SQLException;
@@ -17,5 +18,6 @@ public interface ICartDAO {
 
     public Cart findById(int id);
 
+    public List<CartDetail> findDetailById(int id);
 
 }
