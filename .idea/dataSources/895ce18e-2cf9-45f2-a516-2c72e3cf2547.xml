@@ -1389,6 +1389,7 @@ productId</ColNames>
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="383" parent="314" name="name">
       <Position>2</Position>
