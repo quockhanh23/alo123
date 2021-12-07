@@ -193,6 +193,11 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
+    public List<Product> findByPrice(int price) {
+        return null;
+    }
+
+    @Override
     public List<Product> orderByName() {
         List<Product> list = new ArrayList<>();
         try (Connection connection = getConnection();
@@ -219,6 +224,11 @@ public class ProductDAO implements IProductDAO {
             System.out.println("");
         }
         return list;
+    }
+
+    @Override
+    public void sumQuantity() {
+
     }
 
     @Override

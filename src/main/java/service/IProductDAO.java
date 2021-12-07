@@ -22,6 +22,8 @@ public interface IProductDAO {
 
     List<Product> orderByName();
 
+    void sumQuantity();
+
     boolean delete(int id) throws SQLException;
 
     boolean update(Product product) throws SQLException;
