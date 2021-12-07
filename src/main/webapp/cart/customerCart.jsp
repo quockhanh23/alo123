@@ -152,7 +152,7 @@
                                 </div>
                                 <div class="cart-btns">
                                     <a href="/carts?action=showCusCart">View Cart</a>
-                                    <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="/orders">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -186,7 +186,7 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/homes">Home</a></li>
                 <li><a href="#">Hot Deals</a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Laptops</a></li>
@@ -233,6 +233,7 @@
                     <th style="text-align: center" scope="col">Price</th>
                     <th style="text-align: center" scope="col">Quantity</th>
                     <th style="text-align: center" scope="col">Total</th>
+                    <th style="text-align: center" scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -243,12 +244,13 @@
                     <td style="padding: 60px 60px;text-align: center"><a href="products?action=viewProduct&id=${sessionScope.productsInCart.get(i).id}">${sessionScope.productsInCart.get(i).name}</a></td>
                     <td><img src="./img/${sessionScope.productsInCart.get(i).img}" width="131" height="131"></td>
                     <td style="padding: 60px 60px;text-align: center">${sessionScope.productsInCart.get(i).price}$</td>
-                    <td style="padding: 60px 60px;text-align: center">
+                    <td style="padding: 60px 5px;text-align: center">
                         <a href="/carts?action=minus&productId=${sessionScope.productsInCart.get(i).id}"><i class="fas fa-minus"></i></a>
-                        &ensp;&ensp;${sessionScope.cartDetails.get(i).quantity}&ensp;&ensp;
+                        &ensp;${sessionScope.cartDetails.get(i).quantity}&ensp;
                         <a href="/carts?action=plus&productId=${sessionScope.productsInCart.get(i).id}"><i class="fas fa-plus"></i></a>
                     </td>
                     <td style="padding: 60px 60px;text-align: center">${sessionScope.productsInCart.get(i).price*sessionScope.cartDetails.get(i).quantity}$</td>
+                    <td style="padding: 60px 60px;text-align: center"><a onclick="return confirm('Are you sure to delete product?')" href="/carts?action=deleteProduct&productId=${sessionScope.productsInCart.get(i).id}" class="delete"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                     </c:if>
                 </c:forEach>
@@ -259,6 +261,7 @@
 <%--                    <td>@twitter</td>--%>
 <%--                    <td>@twitter</td>--%>
                     <td style="padding: 60px 60px">${sessionScope.totalInCart}$</td>
+                    <td style="padding: 60px 60px;text-align: center"><a onclick="return confirm('Are you sure to delete all product?')" href="/carts?action=deleteAllProduct" class="delete"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 </tbody>
             </table>

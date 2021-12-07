@@ -43,10 +43,37 @@ public class CartServlet extends HttpServlet {
             case "plus":
                 plusQuantity(request,response);
                 break;
+            case "deleteProduct":
+                deleteProduct(request,response);
+                break;
+            case "deleteAllProduct":
+                deleteAllProduct(request,response);
+                break;
             default:
                 showListCart(request, response);
                 break;
         }
+    }
+
+    private void deleteAllProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+        int cusId = account.getId();
+        cartDAO.deleteAllProduct(cusId);
+        List<CartDetail> details = cartDAO.findDetailById(cusId);
+        session.setAttribute("cartDetails",details);
+        response.sendRedirect("/carts?action=showCusCart");
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+        int proId = Integer.parseInt(request.getParameter("productId"));
+        int cusId = account.getId();
+        cartDAO.deleteProductFromCart(cusId,proId);
+        List<CartDetail> details = cartDAO.findDetailById(cusId);
+        session.setAttribute("cartDetails",details);
+        response.sendRedirect("/carts?action=showCusCart");
     }
 
     private void plusQuantity(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -23,9 +23,6 @@ public class OrderServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            default:
-                showListOrder(request, response);
-                break;
             case "createOrder":
                 showCreate(request, response);
                 break;
@@ -35,8 +32,13 @@ public class OrderServlet extends HttpServlet {
             case "editOrder":
                 showEdit(request, response);
                 break;
-
+            default:
+                showOrder(request,response);
         }
+    }
+
+    private void showOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("order/checkout.jsp").forward(request,response);
     }
 
     private void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

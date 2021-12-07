@@ -44,7 +44,30 @@ public class CartDAO implements ICartDAO {
         }
         return details;
     }
-
+    @Override
+    public void deleteProductFromCart(int cusId,int proId){
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("delete from cartdetail where productId=? and cartId=?")) {
+            preparedStatement.setInt(1, proId);
+            preparedStatement.setInt(2, cusId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("error");
+        }
+    }
+    @Override
+    public void deleteAllProduct(int cusId){
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("update cartdetail set quantity = ? where cartId =?")) {
+            preparedStatement.setInt(1, 0);
+            preparedStatement.setInt(2, cusId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("error");
+        }
+    }
     @Override
     public List<Cart> findAll() {
         List<Cart> list = new ArrayList<>();

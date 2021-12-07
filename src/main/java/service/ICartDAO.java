@@ -22,4 +22,6 @@ public interface ICartDAO {
     public void addProductToCart(int cusId,int proId);
     public CartDetail checkCart(int cartId,int proId);
     public void minusProductToCart(int cusId,int proId);
+    public void deleteProductFromCart(int cusId,int proId);
+    public void deleteAllProduct(int cusId);
 }

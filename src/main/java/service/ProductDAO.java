@@ -47,8 +47,10 @@ public class ProductDAO implements IProductDAO {
                 list.add(new Product(id, name, price, description,
                         action, capacity, barrel, weight, img, categoryId, quantity));
             }
-        } catch (SQLException e) {
+        } catch (SQLException e ) {
             System.out.println("");
+        } catch (NullPointerException e){
+            e.printStackTrace();
         }
         return list;
     }
