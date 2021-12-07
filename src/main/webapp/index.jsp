@@ -82,7 +82,7 @@
                 <div class="col-md-3">
                     <div class="header-logo">
                         <a href="#" class="logo">
-                            <img src="./img/logo.png" alt="">
+                            <img width="80px" height="80px" src="./img/logo1.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#">Hot Deals</a></li>
                 <li><a href="#">Categories</a></li>
-                <li><a href="#">All product</a></li>
+                <li><a href="/products">All product</a></li>
                 <li><a href="#">Smartphones</a></li>
                 <li><a href="#">Cameras</a></li>
                 <li><a href="#">Accessories</a></li>
@@ -1134,7 +1134,7 @@
                         <h3 class="footer-title">Categories</h3>
                         <ul class="footer-links">
                             <li><a href="#">Hot deals</a></li>
-                            <li><a href="#">All product</a></li>
+                            <li><a href="/products">All product</a></li>
                             <li><a href="#">Smartphones</a></li>
                             <li><a href="#">Cameras</a></li>
                             <li><a href="#">Accessories</a></li>
@@ -1190,13 +1190,13 @@
                         <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
                         <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
                     </ul>
-                    <span class="copyright">
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
-                            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                                                                target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							</span>
+<%--                    <span class="copyright">--%>
+<%--								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--%>
+<%--								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i--%>
+<%--                            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"--%>
+<%--                                                                                target="_blank">Colorlib</a>--%>
+<%--                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--%>
+<%--							</span>--%>
                 </div>
             </div>
             <!-- /row -->
