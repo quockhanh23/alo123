@@ -34,9 +34,55 @@ public class CartServlet extends HttpServlet {
             case "showCusCart":
                 showCart(request,response);
                 break;
+            case "addPToCart":
+                addPToCart(request,response);
+                break;
+            case "minus":
+                minusQuantity(request,response);
+                break;
+            case "plus":
+                plusQuantity(request,response);
+                break;
             default:
                 showListCart(request, response);
                 break;
+        }
+    }
+
+    private void plusQuantity(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+        int proId = Integer.parseInt(request.getParameter("productId"));
+        int cusId = account.getId();
+        cartDAO.addProductToCart(cusId,proId);
+        List<CartDetail> details = cartDAO.findDetailById(cusId);
+        session.setAttribute("cartDetails",details);
+        response.sendRedirect("/carts?action=showCusCart");
+    }
+
+    private void minusQuantity(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+        int proId = Integer.parseInt(request.getParameter("productId"));
+        int cusId = account.getId();
+        cartDAO.minusProductToCart(cusId,proId);
+        List<CartDetail> details = cartDAO.findDetailById(cusId);
+        session.setAttribute("cartDetails",details);
+        response.sendRedirect("/carts?action=showCusCart");
+    }
+
+    private void addPToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+        int proId = Integer.parseInt(request.getParameter("id"));
+        if(account==null){
+            response.sendRedirect("/accounts");
+        }else {
+            int cusId = account.getId();
+            cartDAO.addProductToCart(cusId,proId);
+            List<CartDetail> details = cartDAO.findDetailById(cusId);
+            session.setAttribute("cartDetails",details);
+            response.sendRedirect("/products");
         }
     }
 

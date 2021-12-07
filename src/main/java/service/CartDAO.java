@@ -24,25 +24,27 @@ public class CartDAO implements ICartDAO {
         }
         return connection;
     }
+
     @Override
-    public List<CartDetail> findDetailById(int id){
-        List<CartDetail> details =new ArrayList<>();
+    public List<CartDetail> findDetailById(int id) {
+        List<CartDetail> details = new ArrayList<>();
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
                      ("select * from cartdetail where cartId = ?")) {
             System.out.println(preparedStatement);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int cartId = resultSet.getInt("cartId");
                 int productId = resultSet.getInt("productId");
                 int quantity = resultSet.getInt("quantity");
-                details.add(new CartDetail(cartId,productId,quantity));
+                details.add(new CartDetail(cartId, productId, quantity));
             }
         } catch (SQLException e) {
         }
         return details;
     }
+
     @Override
     public List<Cart> findAll() {
         List<Cart> list = new ArrayList<>();
@@ -59,6 +61,77 @@ public class CartDAO implements ICartDAO {
         } catch (SQLException e) {
         }
         return list;
+    }
+
+    @Override
+    public void addProductToCart(int cusId, int proId) {
+        CartDetail cartDetail = checkCart(cusId, proId);
+        if (cartDetail == null) {
+//            thêm sp
+            try (Connection connection = getConnection();
+                 PreparedStatement preparedStatement = connection.prepareStatement
+                         ("insert into cartdetail(cartId, productId,quantity)  values (?,?,?) ")) {
+                preparedStatement.setInt(1, cusId);
+                preparedStatement.setInt(2, proId);
+                preparedStatement.setInt(3, 1);
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println("error");
+            }
+        } else {
+            int quantity = cartDetail.getQuantity();
+            try (Connection connection = getConnection();
+                 PreparedStatement preparedStatement = connection.prepareStatement
+                         ("update cartdetail set quantity = ? where cartId =? and productId =?")) {
+                preparedStatement.setInt(1, quantity + 1);
+                preparedStatement.setInt(2, cusId);
+                preparedStatement.setInt(3, proId);
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println("error");
+            }
+        }
+    }
+
+    @Override
+    public void minusProductToCart(int cusId, int proId) {
+        CartDetail cartDetail = checkCart(cusId, proId);
+
+        int quantity = cartDetail.getQuantity();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("update cartdetail set quantity = ? where cartId =? and productId =?")) {
+            preparedStatement.setInt(1, quantity - 1);
+            preparedStatement.setInt(2, cusId);
+            preparedStatement.setInt(3, proId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("error");
+        }
+
+    }
+
+    @Override
+    public CartDetail checkCart(int cartId, int proId) {
+        CartDetail cartDetail = null;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select * from cartdetail where cartId =? and productId =?;")) {
+            preparedStatement.setInt(1, cartId);
+            preparedStatement.setInt(2, proId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int cartId1 = Integer.parseInt(resultSet.getString("cartId"));
+                int productId = Integer.parseInt(resultSet.getString("productId"));
+                int quantity = Integer.parseInt(resultSet.getString("quantity"));
+                cartDetail = new CartDetail(cartId1, productId, quantity);
+            }
+            ;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return cartDetail;
     }
 
     @Override

@@ -328,7 +328,8 @@
                                     </h4>
                                 </div>
                                 <div class="add-to-cart">
-                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart
+                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
+                                        <a href="/carts?action=addPToCart&id=${cus.id}">add to cart</a>
                                     </button>
                                 </div>
                             </div>

@@ -41,6 +41,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <style>
         td{
             padding:60px 60px;
@@ -226,32 +227,32 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Num.</th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
+                    <th style="text-align: center" scope="col">Num.</th>
+                    <th style="text-align: center" scope="col">Product</th>
+                    <th style="text-align: center" scope="col">Image</th>
+                    <th style="text-align: center" scope="col">Price</th>
+                    <th style="text-align: center" scope="col">Quantity</th>
+                    <th style="text-align: center" scope="col">Total</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="i" begin="0" end="${sessionScope.cartDetails.size() -1}">
+                    <c:if test="${sessionScope.cartDetails.get(i).quantity > 0}">
                 <tr>
-                    <th style="padding: 60px 60px" scope="row">${i+1}</th>
-                    <td style="padding: 60px 60px"><a href="products?action=viewProduct&id=${sessionScope.productsInCart.get(i).id}">${sessionScope.productsInCart.get(i).name}</a></td>
+                    <th style="padding: 60px 60px;text-align: center" scope="row">${i+1}</th>
+                    <td style="padding: 60px 60px;text-align: center"><a href="products?action=viewProduct&id=${sessionScope.productsInCart.get(i).id}">${sessionScope.productsInCart.get(i).name}</a></td>
                     <td><img src="./img/${sessionScope.productsInCart.get(i).img}" width="131" height="131"></td>
-                    <td style="padding: 60px 60px">${sessionScope.productsInCart.get(i).price}$</td>
-                    <td style="padding: 60px 60px">${sessionScope.cartDetails.get(i).quantity}</td>
-                    <td style="padding: 60px 60px">${sessionScope.productsInCart.get(i).price*sessionScope.cartDetails.get(i).quantity}$</td>
+                    <td style="padding: 60px 60px;text-align: center">${sessionScope.productsInCart.get(i).price}$</td>
+                    <td style="padding: 60px 60px;text-align: center">
+                        <a href="/carts?action=minus&productId=${sessionScope.productsInCart.get(i).id}"><i class="fas fa-minus"></i></a>
+                        &ensp;&ensp;${sessionScope.cartDetails.get(i).quantity}&ensp;&ensp;
+                        <a href="/carts?action=plus&productId=${sessionScope.productsInCart.get(i).id}"><i class="fas fa-plus"></i></a>
+                    </td>
+                    <td style="padding: 60px 60px;text-align: center">${sessionScope.productsInCart.get(i).price*sessionScope.cartDetails.get(i).quantity}$</td>
                 </tr>
+                    </c:if>
                 </c:forEach>
-<%--                <tr>--%>
-<%--                    <th scope="row">2</th>--%>
-<%--                    <td>Jacob</td>--%>
-<%--                    <td>Thornton</td>--%>
-<%--                    <td>@fat</td>--%>
-<%--                    <td>@fat</td>--%>
-<%--                </tr>--%>
+
                 <tr>
                     <th style="padding: 60px 60px" scope="row">Total</th>
                     <td colspan="4"> </td>

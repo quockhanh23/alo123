@@ -19,5 +19,7 @@ public interface ICartDAO {
     public Cart findById(int id);
 
     public List<CartDetail> findDetailById(int id);
-
+    public void addProductToCart(int cusId,int proId);
+    public CartDetail checkCart(int cartId,int proId);
+    public void minusProductToCart(int cusId,int proId);
 }

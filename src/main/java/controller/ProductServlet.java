@@ -1,6 +1,10 @@
 package controller;
 
+import model.Account;
+import model.CartDetail;
 import model.Product;
+import service.CartDAO;
+import service.ICartDAO;
 import service.IProductDAO;
 import service.ProductDAO;
 
@@ -14,7 +18,7 @@ import java.util.List;
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
     private IProductDAO productDAO = new ProductDAO();
-
+    private ICartDAO cartDAO = new CartDAO();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -96,6 +100,17 @@ public class ProductServlet extends HttpServlet {
         List<Product> allProduct=productDAO.findAll();
         HttpSession session = request.getSession();
         session.setAttribute("allProduct",allProduct);
+        Account account = (Account) session.getAttribute("acc");
+        int id = account.getId();
+        List<Product> productsInCart = productDAO.findProductInCart(id);
+        List<CartDetail> details = cartDAO.findDetailById(id);
+        session.setAttribute("productsInCart",productsInCart);
+        session.setAttribute("cartDetails",details);
+        double total = 0;
+        for (int i = 0; i < productsInCart.size(); i++) {
+            total+= productsInCart.get(i).getPrice()* details.get(i).getQuantity();
+        }
+        session.setAttribute("totalInCart",total);
         if (key == null) {
             products = productDAO.findAll();
             products1 = productDAO.findRecentProduct();
