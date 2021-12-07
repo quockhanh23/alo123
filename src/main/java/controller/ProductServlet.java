@@ -93,6 +93,9 @@ public class ProductServlet extends HttpServlet {
         String key = request.getParameter("key");
         List<Product> products;
         List<Product> products1;
+        List<Product> allProduct=productDAO.findAll();
+        HttpSession session = request.getSession();
+        session.setAttribute("allProduct",allProduct);
         if (key == null) {
             products = productDAO.findAll();
             products1 = productDAO.findRecentProduct();

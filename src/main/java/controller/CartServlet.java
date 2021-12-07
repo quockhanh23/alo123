@@ -1,10 +1,7 @@
 package controller;
 
 import model.*;
-import service.AccountDAO;
-import service.CartDAO;
-import service.IAccountDAO;
-import service.ICartDAO;
+import service.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -17,6 +14,7 @@ import java.util.List;
 public class CartServlet extends HttpServlet {
     private ICartDAO cartDAO = new CartDAO();
     private IAccountDAO accountDAO = new AccountDAO();
+    private IProductDAO productDAO = new ProductDAO();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -49,8 +47,17 @@ public class CartServlet extends HttpServlet {
             response.sendRedirect("/accounts");
         }else {
             int id = account.getId();
+//            select product.name, product.price,cartdetail.quantity,sum(product.price*cartdetail.quantity) as total1
+//            from cartdetail join product on cartdetail.productId = product.id where cartId=? group by product.name
+            List<Product> productsInCart = productDAO.findProductInCart(id);
             List<CartDetail> details = cartDAO.findDetailById(id);
+            session.setAttribute("productsInCart",productsInCart);
             session.setAttribute("cartDetails",details);
+            double total = 0;
+            for (int i = 0; i < productsInCart.size(); i++) {
+               total+= productsInCart.get(i).getPrice()* details.get(i).getQuantity();
+            }
+            session.setAttribute("totalInCart",total);
             request.getRequestDispatcher("cart/customerCart.jsp").forward(request,response);
         }
 

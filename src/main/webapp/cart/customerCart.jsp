@@ -41,7 +41,11 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style>
+        td{
+            padding:60px 60px;
+        }
+    </style>
 </head>
 <body>
 <!-- HEADER -->
@@ -108,13 +112,13 @@
                 <div class="col-md-3 clearfix">
                     <div class="header-ctn">
                         <!-- Wishlist -->
-                        <div>
-                            <a href="#">
-                                <i class="fa fa-heart-o"></i>
-                                <span>Your Wishlist</span>
-                                <div class="qty">2</div>
-                            </a>
-                        </div>
+<%--                        <div>--%>
+<%--                            <a href="#">--%>
+<%--                                <i class="fa fa-heart-o"></i>--%>
+<%--                                <span>Your Wishlist</span>--%>
+<%--                                <div class="qty">2</div>--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
                         <!-- /Wishlist -->
 
                         <!-- Cart -->
@@ -122,38 +126,31 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty">3</div>
+                                <div class="qty">${sessionScope.productsInCart.size()}</div>
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="./img/product01.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
 
+                                    <c:forEach var="i" begin="0" end="${sessionScope.productsInCart.size()-1}">
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="./img/product02.png" alt="">
+                                            <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
                                         </div>
                                         <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+                                            <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
+                                            <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
                                         </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
+<%--                                        <button class="delete"><i class="fa fa-close"></i></button>--%>
                                     </div>
+                                    </c:forEach>
+
                                 </div>
                                 <div class="cart-summary">
-                                    <small>3 Item(s) selected</small>
-                                    <h5>SUBTOTAL: $2940.00</h5>
+                                    <small>${sessionScope.productsInCart.size()} Item(s) selected</small>
+                                    <h5>SUBTOTAL: $${sessionScope.totalInCart}</h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="#">View Cart</a>
+                                    <a href="/carts?action=showCusCart">View Cart</a>
                                     <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
@@ -231,6 +228,7 @@
                 <tr>
                     <th scope="col">Num.</th>
                     <th scope="col">Product</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Total</th>
@@ -239,11 +237,12 @@
                 <tbody>
                 <c:forEach var="i" begin="0" end="${sessionScope.cartDetails.size() -1}">
                 <tr>
-                    <th scope="row">${i+1}</th>
-                    <td>${sessionScope.cartDetails.get(i).cartId}</td>
-                    <td>${sessionScope.cartDetails.get(i).productId}</td>
-                    <td>${sessionScope.cartDetails.get(i).quantity}</td>
-                    <td>@mdo</td>
+                    <th style="padding: 60px 60px" scope="row">${i+1}</th>
+                    <td style="padding: 60px 60px"><a href="products?action=viewProduct&id=${sessionScope.productsInCart.get(i).id}">${sessionScope.productsInCart.get(i).name}</a></td>
+                    <td><img src="./img/${sessionScope.productsInCart.get(i).img}" width="131" height="131"></td>
+                    <td style="padding: 60px 60px">${sessionScope.productsInCart.get(i).price}$</td>
+                    <td style="padding: 60px 60px">${sessionScope.cartDetails.get(i).quantity}</td>
+                    <td style="padding: 60px 60px">${sessionScope.productsInCart.get(i).price*sessionScope.cartDetails.get(i).quantity}$</td>
                 </tr>
                 </c:forEach>
 <%--                <tr>--%>
@@ -254,11 +253,11 @@
 <%--                    <td>@fat</td>--%>
 <%--                </tr>--%>
                 <tr>
-                    <th scope="row">Total</th>
-                    <td colspan="3"> </td>
+                    <th style="padding: 60px 60px" scope="row">Total</th>
+                    <td colspan="4"> </td>
 <%--                    <td>@twitter</td>--%>
 <%--                    <td>@twitter</td>--%>
-                    <td>9999</td>
+                    <td style="padding: 60px 60px">${sessionScope.totalInCart}$</td>
                 </tr>
                 </tbody>
             </table>

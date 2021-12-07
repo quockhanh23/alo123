@@ -81,7 +81,28 @@ public class ProductDAO implements IProductDAO {
         }
         return list;
     }
-
+    @Override
+    public List<Product> findProductInCart(int id){
+        List<Product> list = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select product.id,product.name,product.price,product.img,product.categoryId from product join cartdetail on product.id = cartdetail.productId where cartId=? group by product.name;")) {
+            System.out.println(preparedStatement);
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int idP=rs.getInt("id");
+                String name = rs.getString("name");
+                double price = rs.getDouble("price");
+                String img = rs.getString("img");
+                String categoryId =rs.getString("categoryId");
+                list.add(new Product(idP,name, price,img,categoryId));
+            }
+        } catch (SQLException e) {
+            System.out.println("");
+        }
+        return list;
+    }
     @Override
     public List<Product> findRelatedProducts(String categoryId1) {
         List<Product> list = new ArrayList<>();
