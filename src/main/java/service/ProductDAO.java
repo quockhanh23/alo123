@@ -1,6 +1,5 @@
 package service;
 
-import model.Comment;
 import model.Product;
 
 import java.sql.*;
@@ -117,19 +116,18 @@ public class ProductDAO implements IProductDAO {
     public void add(Product product) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
-                     ("insert into product(id,name, price,description,action" +
-                             ",capacity,barrel,weight,img,categoryId, quantity)  values (?,?,?,?,?,?,?,?,?,?,?) ")) {
-            preparedStatement.setInt(1, product.getId());
-            preparedStatement.setString(2, product.getName());
-            preparedStatement.setDouble(3, product.getPrice());
-            preparedStatement.setString(4, product.getDescription());
-            preparedStatement.setString(5, product.getAction());
-            preparedStatement.setString(6, product.getCapacity());
-            preparedStatement.setString(7, product.getBarrel());
-            preparedStatement.setString(8, product.getWeight());
-            preparedStatement.setString(9, product.getImg());
-            preparedStatement.setString(10, product.getCategoryId());
-            preparedStatement.setInt(11, product.getQuantity());
+                     ("insert into product(name, price,description,action" +
+                             ",capacity,barrel,weight,img,categoryId, quantity)  values (?,?,?,?,?,?,?,?,?,?) ")) {
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setDouble(2, product.getPrice());
+            preparedStatement.setString(3, product.getDescription());
+            preparedStatement.setString(4, product.getAction());
+            preparedStatement.setString(5, product.getCapacity());
+            preparedStatement.setString(6, product.getBarrel());
+            preparedStatement.setString(7, product.getWeight());
+            preparedStatement.setString(8, product.getImg());
+            preparedStatement.setString(9, product.getCategoryId());
+            preparedStatement.setInt(10, product.getQuantity());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error");
@@ -172,32 +170,11 @@ public class ProductDAO implements IProductDAO {
                      ("select * from product where name like ?");) {
             System.out.println(preparedStatement);
             preparedStatement.setString(1, "%" + name + "%");
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String name1 = rs.getString("name");
-                double price = rs.getDouble("price");
-                String img = rs.getString("img");
-                product.add(new Product(id, name1, price, img));
-            }
-        } catch (SQLException ignored) {
-        }
-        return product;
-    }
-
-    @Override
-    public List<Product> findByPrice(int price) {
-        List<Product> list = new ArrayList<>();
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement
-                     ("select * from product where price < ?")) {
-            System.out.println(preparedStatement);
-            preparedStatement.setInt(1, price);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int id = Integer.parseInt(resultSet.getString("id"));
-                String name = resultSet.getString("name");
-                double price1 = Double.parseDouble(resultSet.getString("price"));
+                int id = resultSet.getInt("id");
+                String name1 = resultSet.getString("name");
+                double price = resultSet.getDouble("price");
                 String description = resultSet.getString("description");
                 String action = resultSet.getString("action");
                 String capacity = resultSet.getString("capacity");
@@ -206,12 +183,13 @@ public class ProductDAO implements IProductDAO {
                 String img = resultSet.getString("img");
                 String categoryId = resultSet.getString("categoryId");
                 int quantity = Integer.parseInt(resultSet.getString("quantity"));
-                list.add(new Product(id, name, price1, description, action,
+                product.add(new Product(id, name1, price, description, action,
                         capacity, barrel, weight, img, categoryId, quantity));
             }
         } catch (SQLException ignored) {
+
         }
-        return list;
+        return product;
     }
 
     @Override
@@ -261,7 +239,7 @@ public class ProductDAO implements IProductDAO {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
                      ("update product set name =?, price=?,description=?,action=?," +
-                             "capacity=?,barrel=?,weight=?,img=?,categoryId=?, quantity=? where id = ? ")) {
+                             "capacity=?,barrel=?,weight=?,img=?,categoryId=?, quantity=? where id = ? ");) {
             preparedStatement.setInt(11, product.getId());
             preparedStatement.setString(1, product.getName());
             preparedStatement.setDouble(2, product.getPrice());

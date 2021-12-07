@@ -245,6 +245,7 @@
         .modal form label {
             font-weight: normal;
         }
+
     </style>
     <script>
         $(document).ready(function(){
@@ -283,40 +284,73 @@
                     </div>
                     <div class="col-sm-6">
                         <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-<%--                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>--%>
-                            <form action="/manager1">
-                                <input type="text" name="key" size="28px">
-                                <button class="btn btn-success">Find Product</button>
-                            </form>
+                        <%--                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>--%>
+                        <form action="/manager1">
+                            <input type="text" name="key" size="28px">
+                            <button class="btn btn-success">Find Product</button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <table class="table table-striped table-hover" border="1" >
+            <table class="table table-striped table-hover" border="1">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>Quantity</th>
-                    <th>Actions</th>
+                    <th>Field</th>
+                    <th>Content</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="product" items="${products}">
                 <tr>
-                    <td><a href="/manager1?action=view&id=${product.id}">${product.name}</a></td>
-                    <td>${product.price}$</td>
-                    <td>${product.categoryId}</td>
-                    <td>${product.quantity}</td>
+                    <td>Name</td>
+                    <td>${productFound.name}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>${productFound.price}$</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>${productFound.description}</td>
+                </tr>
+                <tr>
+                    <td>Action</td>
+                    <td>${productFound.action}</td>
+                </tr>
+                <tr>
+                    <td>Capacity</td>
+                    <td>${productFound.capacity}</td>
+                </tr>
+                <tr>
+                    <td>Barrel</td>
+                    <td>${productFound.barrel}</td>
+                </tr>
+                <tr>
+                    <td>Weight</td>
+                    <td>${productFound.weight}</td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td>${productFound.img}</td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td>${productFound.categoryId}</td>
+                </tr>
+                <tr>
+                    <td>Quantity</td>
+                    <td>${productFound.quantity}</td>
+                </tr>
+                <tr>
+                    <td>Service</td>
                     <td>
-<%--                        data-toggle="modal"--%>
-                        <a href="/manager1?action=edit&id=${product.id}" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Edit</a>
-                        <a onclick="return confirm('Are you sure?')" href="/manager1?action=delete&id=${product.id}" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
+                        <a href="/manager1?action=edit&id=${productFound.id}" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Edit</a>
+                        <a onclick="return confirm('Are you sure?')" href="/manager1?action=delete&id=${productFound.id}" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
                     </td>
                 </tr>
-                </c:forEach>
                 </tbody>
+
             </table>
+
         </div>
     </div>
 </div>
@@ -380,63 +414,6 @@
     </div>
 </div>
 <!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name3" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input type="text" name="price3" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea class="form-control" name="description3" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Action</label>
-                        <input type="text" name="action3" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Capacity</label>
-                        <input type="text" name="capacity3" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Barrel</label>
-                        <input type="text" name="barrel3" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Weight</label>
-                        <input type="text" name="weight3" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Image</label>
-                        <input type="text" name="img3" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Category</label>
-                        <input type="number" name="category3" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Quantity</label>
-                        <input type="Number" name="quantity3" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 </body>
 </html>
