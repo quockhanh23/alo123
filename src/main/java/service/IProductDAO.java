@@ -8,21 +8,22 @@ import java.util.List;
 public interface IProductDAO {
     List<Product> findAll();
 
+    List<Product> findGun(String gun);
+
+
     List<Product> findRelatedProducts(String categoryId1);
 
     List<Product> findRecentProduct();
 
     void add(Product product) throws SQLException;
 
-    Product findById(int id);
-
     List<Product> findByName(String name);
 
-    List<Product> findByPrice(int price);
+    List<Product> findByPrice(int price1 , int price2);
 
     List<Product> orderByName();
 
-    void sumQuantity();
+    Product findById(int id);
 
     boolean delete(int id) throws SQLException;
 
