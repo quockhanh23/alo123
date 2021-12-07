@@ -10,7 +10,6 @@ public interface IProductDAO {
 
     List<Product> findGun(String gun);
 
-
     List<Product> findRelatedProducts(String categoryId1);
 
     List<Product> findRecentProduct();
@@ -22,6 +21,8 @@ public interface IProductDAO {
     List<Product> findByPrice(int price1 , int price2);
 
     List<Product> orderByName();
+
+    List<Product> orderByPrice();
 
     Product findById(int id);
 
