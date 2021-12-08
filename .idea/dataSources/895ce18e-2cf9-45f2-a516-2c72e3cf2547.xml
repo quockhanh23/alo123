@@ -1214,6 +1214,7 @@ productId</ColNames>
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="346" parent="300" name="accountId">
       <Position>2</Position>

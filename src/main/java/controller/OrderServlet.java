@@ -1,5 +1,6 @@
 package controller;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import model.*;
 import service.*;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +19,7 @@ public class OrderServlet extends HttpServlet {
     private IOrderDAO orderDAO = new OrderDAO();
     private IProductDAO productDAO = new ProductDAO();
     private ICartDAO cartDAO = new CartDAO();
+    private IOrderDetailDAO orderDetailDAO = new OrderDetailDAO();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -28,7 +31,11 @@ public class OrderServlet extends HttpServlet {
                 showCreate(request, response);
                 break;
             case "deleteOrder":
-                showDelete(request, response);
+                try {
+                    deleteOrder(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 break;
             case "editOrder":
                 showEdit(request, response);
@@ -36,9 +43,49 @@ public class OrderServlet extends HttpServlet {
             case "showUserOrder":
                 showUserOrder(request,response);
                 break;
+            case "placeOrder":
+                try {
+                    placeOrder(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
-                showOrder(request,response);
+                showUserOrder(request,response);
         }
+    }
+
+    private void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+        int cusId = account.getId();
+        int id = Integer.parseInt(request.getParameter("orderId"));
+        orderDAO.delete(id);
+        orderDetailDAO.delete(id);
+        List<Order> orders = orderDAO.findOrder(cusId);
+        session.setAttribute("orderList", orders);
+        response.sendRedirect("/orders");
+    }
+    private void placeOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+        int cusId = account.getId();
+        String address =account.getAddress();
+        String time = LocalDateTime.now().toString();
+        Order newOrder = new Order(1,account.getId(),time,"pending",address);
+        orderDAO.add(newOrder);
+        List<Order> orders = orderDAO.findOrder(cusId);
+        Order lastOrder = orderDAO.findNewOrder(cusId);
+        session.setAttribute("orderList", orders);
+        List<CartDetail> details = cartDAO.findDetailById(cusId);
+        for (int i = 0; i < details.size(); i++) {
+            orderDetailDAO.add(new OrderDetail(lastOrder.getId(),details.get(i).getProductId(),details.get(i).getQuantity() ));
+        }
+        cartDAO.deleteAllProduct(cusId);
+        List<CartDetail> details1 = cartDAO.findDetailById(cusId);
+        session.setAttribute("cartDetails",details1);
+//        session.setAttribute("orderDetail", orderDetails);
+        response.sendRedirect("/orders?action=showUserOrder");
     }
 
     private void showUserOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -113,53 +160,6 @@ public class OrderServlet extends HttpServlet {
         if (action == null) {
             action = "";
         }
-        switch (action) {
-            case "createOrder":
-//                try {
-//                    createOrder(request, response);
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                }
-//                break;
-            case "deleteOrder":
-                try {
-                    deleteOrder(request, response);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
-//            case "editOrder":
-//                try {
-//                    saveEdit(request, response);
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                }
-//                break;
-        }
     }
 
-//    private void saveEdit(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        int acc = Integer.parseInt(request.getParameter("accountId"));
-//        String time = request.getParameter("time");
-//        int status = Integer.parseInt(request.getParameter("status"));
-//        Order order = new Order(id, acc, time, status);
-//        orderDAO.update(order);
-//        response.sendRedirect("/orders");
-//    }
-
-    private void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        orderDAO.delete(id);
-        response.sendRedirect("/orders");
-    }
-
-//    private void createOrder(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        int acc = Integer.parseInt(request.getParameter("accountId"));
-//        String time = request.getParameter("time");
-//        int stt = Integer.parseInt(request.getParameter("status"));
-//        orderDAO.add(new Order(id, acc, time, stt));
-//        response.sendRedirect("/orders");
-//    }
 }

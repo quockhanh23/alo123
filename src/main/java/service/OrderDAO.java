@@ -53,12 +53,11 @@ public class OrderDAO implements IOrderDAO {
     public void add(Order order) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
-                     ("insert into orderofcustomer(id, accountId, time, status,address )  values (?,?,?,?,?) ")) {
-            preparedStatement.setInt(1, order.getId());
-            preparedStatement.setInt(2, order.getAccountId());
-            preparedStatement.setString(3, order.getTime());
-            preparedStatement.setString(4, order.getStatus());
-            preparedStatement.setString(5, order.getAddress());
+                     ("insert into orderofcustomer(accountId, time, status,address )  values (?,?,?,?) ")) {
+            preparedStatement.setInt(1, order.getAccountId());
+            preparedStatement.setString(2, order.getTime());
+            preparedStatement.setString(3, order.getStatus());
+            preparedStatement.setString(4, order.getAddress());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error");
@@ -114,6 +113,27 @@ public class OrderDAO implements IOrderDAO {
             System.out.println("");
         }
         return list;
+    }
+    @Override
+    public Order findNewOrder(int id){
+        Order order =null;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select  * from orderofcustomer order by id desc limit 1")) {
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id1 = rs.getInt("id");
+                int acc = rs.getInt("accountId");
+                String time = rs.getString("time");
+                String status = rs.getString("status");
+                String address = rs.getString("address");
+                order = new Order(id1, acc, time, status,address);
+            }
+        } catch (SQLException e) {
+            System.out.println("");
+        }
+        return order;
     }
     @Override
     public List<OrderDetail> findDetailById(int id){

@@ -20,4 +20,5 @@ public interface IOrderDAO {
     public List<Order> findOrder(int id);
     public List<OrderDetail> findDetailById(int id);
     public List<TotalBill> findAllTotal(int id);
+    public Order findNewOrder(int id);
 }

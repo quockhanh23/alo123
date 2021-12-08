@@ -62,14 +62,14 @@
             <ul class="header-links pull-right">
                 <c:if test="${sessionScope.acc != null}">
                     <li><a href="#"><i class="fa fa-dollar"></i> Wallet: ${sessionScope.acc.balance}</a></li>
-                    <li><a href="#"><i class="fa fa-user-o"></i> Hello ${sessionScope.acc.name}</a></li>
+                    <li><a href="#"><i class="fas fa-user"></i> Hello ${sessionScope.acc.name}</a></li>
                     <c:if test="${sessionScope.acc.roleId == 1}">
-                        <li><a href="/manager1"><i class="fa fa-user-o"></i> Manager</a></li>
+                        <li><a href="/manager1"><i class="fas fa-user"></i> Manager</a></li>
                     </c:if>
                     <li><a href="/accounts?action=logout"><i class="fa"></i> Logout</a></li>
                 </c:if>
                 <c:if test="${sessionScope.acc == null}">
-                    <li><a href="#"><i class="fa fa-user-o"></i> Guest</a></li>
+                    <li><a href="#"><i class="fas fa-user"></i> Guest</a></li>
                     <li><a href="/accounts?action=login"><i class="fa"></i> Login</a></li>
                 </c:if>
             </ul>
@@ -110,7 +110,7 @@
                         <!-- Wishlist -->
                         <div>
                             <a style="width: 120px" href="#">
-                                <i class="fa fa-heart-o"></i>
+                                <i class="far fa-heart"></i>
                                 <span>Deposit money</span>
                                 <div></div>
                             </a>
@@ -119,7 +119,7 @@
                         <!-- Wishlist -->
                         <div>
                             <a style="width: 120px" href="/orders?action=showUserOrder">
-                                <i class="fa fa-heart-o"></i>
+                                <i class="far fa-heart"></i>
                                 <span>Your Order List</span>
                                 <div ></div>
                             </a>
@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="cart-btns">
                                     <a href="/carts?action=showCusCart">View Cart</a>
-                                    <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="/orders">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -190,13 +190,12 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="/homes">Home</a></li>
-                <li><a href="#">Hot Deals</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Laptops</a></li>
-                <li><a href="#">Smartphones</a></li>
-                <li><a href="#">Cameras</a></li>
-                <li><a href="#">Accessories</a></li>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="/products">All product</a></li>
+                <li><a href="#">Hand gun</a></li>
+                <li><a href="#">Rifle</a></li>
+                <li><a href="#">Shot gun</a></li>
+                <li><a href="#">Snipe</a></li>
             </ul>
             <!-- /NAV -->
         </div>

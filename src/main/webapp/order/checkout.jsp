@@ -40,6 +40,8 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     <![endif]-->
 
 </head>
@@ -105,7 +107,7 @@
                         <!-- Wishlist -->
                         <div>
                             <a style="width: 120px" href="#">
-                                <i class="fa fa-heart-o"></i>
+                                <i class="far fa-heart-o"></i>
                                 <span>Deposit money</span>
                                 <div></div>
                             </a>
@@ -114,7 +116,7 @@
                         <!-- Wishlist -->
                         <div>
                             <a style="width: 120px" href="/orders?action=showUserOrder">
-                                <i class="fa fa-heart-o"></i>
+                                <i class="far fa-heart-o"></i>
                                 <span>Your Order List</span>
                                 <div ></div>
                             </a>
@@ -150,7 +152,7 @@
                                 </div>
                                 <div class="cart-btns">
                                     <a href="/carts?action=showCusCart">View Cart</a>
-                                    <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="/orders">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -184,13 +186,12 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="/homes">Home</a></li>
-                <li><a href="#">Hot Deals</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Laptops</a></li>
-                <li><a href="#">Smartphones</a></li>
-                <li><a href="#">Cameras</a></li>
-                <li><a href="#">Accessories</a></li>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="/products">All product</a></li>
+                <li><a href="#">Hand gun</a></li>
+                <li><a href="#">Rifle</a></li>
+                <li><a href="#">Shot gun</a></li>
+                <li><a href="#">Snipe</a></li>
             </ul>
             <!-- /NAV -->
         </div>
@@ -240,7 +241,7 @@
 
                 <!-- Order notes -->
                 <div class="order-notes">
-                    <textarea class="input" placeholder="${sessionScope.acc.address}"></textarea>
+                    <textarea class="input" name="address" placeholder="${sessionScope.acc.address}"></textarea>
                 </div>
                 <!-- /Order notes -->
             </div>
@@ -275,7 +276,7 @@
                         <div><strong class="order-total">$${sessionScope.totalInCart}</strong></div>
                     </div>
                 </div>
-                <a href="/orders?action=showUserOrder" class="primary-btn order-submit">Place order</a>
+                <a href="/orders?action=placeOrder" class="primary-btn order-submit">Place order</a>
             </div>
             <!-- /Order Details -->
         </div>

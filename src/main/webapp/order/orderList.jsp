@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: susu
@@ -16,22 +17,18 @@
   <title>Electro - HTML Ecommerce Template</title>
 
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-
   <!-- Bootstrap -->
   <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
-
   <!-- Slick -->
   <link type="text/css" rel="stylesheet" href="css/slick.css"/>
   <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
-
   <!-- nouislider -->
   <link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
-
   <!-- Font Awesome Icon -->
   <link rel="stylesheet" href="css/font-awesome.min.css">
-
   <!-- Custom stlylesheet -->
   <link type="text/css" rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,14 +57,14 @@
       <ul class="header-links pull-right">
         <c:if test="${sessionScope.acc != null}">
           <li><a href="#"><i class="fa fa-dollar"></i> Wallet: ${sessionScope.acc.balance}</a></li>
-          <li><a href="#"><i class="fa fa-user-o"></i> Hello ${sessionScope.acc.name}</a></li>
+          <li><a href="#"><i class="fas fa-user"></i> Hello ${sessionScope.acc.name}</a></li>
           <c:if test="${sessionScope.acc.roleId == 1}">
-            <li><a href="/manager1"><i class="fa fa-user-o"></i> Manager</a></li>
+            <li><a href="/manager1"><i class="fas fa-user"></i> Manager</a></li>
           </c:if>
           <li><a href="/accounts?action=logout"><i class="fa"></i> Logout</a></li>
         </c:if>
         <c:if test="${sessionScope.acc == null}">
-          <li><a href="#"><i class="fa fa-user-o"></i> Guest</a></li>
+          <li><a href="#"><i class="fas fa-user"></i> Guest</a></li>
           <li><a href="/accounts?action=login"><i class="fa"></i> Login</a></li>
         </c:if>
       </ul>
@@ -108,7 +105,7 @@
             <!-- Wishlist -->
             <div>
               <a style="width: 120px" href="#">
-                <i class="fa fa-heart-o"></i>
+                <i class="far fa-heart"></i>
                 <span>Deposit money</span>
                 <div></div>
               </a>
@@ -117,7 +114,7 @@
             <!-- Wishlist -->
             <div>
               <a style="width: 120px" href="/orders?action=showUserOrder">
-                <i class="fa fa-heart-o"></i>
+                <i class="far fa-heart"></i>
                 <span>Your Order List</span>
                 <div ></div>
               </a>
@@ -154,7 +151,7 @@
                 </div>
                 <div class="cart-btns">
                   <a href="/carts?action=showCusCart">View Cart</a>
-                  <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="/orders">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
             </div>
@@ -189,12 +186,11 @@
       <!-- NAV -->
       <ul class="main-nav nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Hot Deals</a></li>
-        <li><a href="#">Categories</a></li>
-        <li><a href="#">Laptops</a></li>
-        <li><a href="#">Smartphones</a></li>
-        <li><a href="#">Cameras</a></li>
-        <li><a href="#">Accessories</a></li>
+        <li><a href="/products">All product</a></li>
+        <li><a href="#">Hand gun</a></li>
+        <li><a href="#">Rifle</a></li>
+        <li><a href="#">Shot gun</a></li>
+        <li><a href="#">Snipe</a></li>
       </ul>
       <!-- /NAV -->
     </div>
@@ -252,7 +248,12 @@
               <td style="padding: 60px 60px;text-align: center">${orderList.get(i).address}</td>
               <td style="padding: 60px 5px;text-align: center">${orderList.get(i).status}</td>
               <td style="padding: 60px 60px;text-align: center">${sessionScope.allTotalBill.get(i).total}$</td>
-              <td style="padding: 60px 60px;text-align: center"><a onclick="return confirm('Are you sure to delete product?')" href="" class="delete"><i class="fas fa-trash-alt"></i></a></td>
+              <c:if test="${orderList.get(i).status == 'pending'}">
+              <td style="padding: 60px 60px;text-align: center"><a onclick="return confirm('Are you sure to delete your order?')" href="/orders?action=deleteOrder&orderId=${orderList.get(i).id}" class="delete"><i class="fas fa-trash-alt"></i></a></td>
+              </c:if>
+              <c:if test="${orderList.get(i).status == 'paid'}">
+                <td style="padding: 60px 60px;text-align: center"><a  href="" >Comment</a></td>
+              </c:if>
             </tr>
         </c:forEach>
 

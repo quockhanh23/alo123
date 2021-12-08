@@ -145,7 +145,7 @@
                                 </div>
                                 <div class="cart-btns">
                                     <a href="/carts?action=showCusCart">View Cart</a>
-                                    <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="/orders">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -179,13 +179,12 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="/homes">Home</a></li>
-                <li><a href="#">Hot Deals</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Laptops</a></li>
-                <li><a href="#">Smartphones</a></li>
-                <li><a href="#">Cameras</a></li>
-                <li><a href="#">Accessories</a></li>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="/products">All product</a></li>
+                <li><a href="#">Hand gun</a></li>
+                <li><a href="#">Rifle</a></li>
+                <li><a href="#">Shot gun</a></li>
+                <li><a href="#">Snipe</a></li>
             </ul>
             <!-- /NAV -->
         </div>
