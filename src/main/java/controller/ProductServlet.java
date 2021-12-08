@@ -42,10 +42,48 @@ public class ProductServlet extends HttpServlet {
             case "viewProduct":
                 showView(request, response);
                 break;
+            case "showCate":
+                showCate(request,response);
+                break;
             default:
                 showListProduct(request, response);
                 break;
         }
+    }
+
+    private void showCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("storeByCategory.jsp");
+        int cateId = Integer.parseInt(request.getParameter("cateId"));
+        request.setAttribute("cateId",cateId);
+        String key = request.getParameter("key");
+        List<Product> products;
+        List<Product> products1;
+        List<Product> allProduct=productDAO.findAll();
+        HttpSession session = request.getSession();
+        session.setAttribute("allProduct",allProduct);
+        Account account = (Account) session.getAttribute("acc");
+        int id = account.getId();
+        List<Product> productsInCart = productDAO.findProductInCart(id);
+        List<CartDetail> details = cartDAO.findDetailById(id);
+        session.setAttribute("productsInCart",productsInCart);
+        session.setAttribute("cartDetails",details);
+        double total = 0;
+        for (int i = 0; i < productsInCart.size(); i++) {
+            total+= productsInCart.get(i).getPrice()* details.get(i).getQuantity();
+        }
+        session.setAttribute("totalInCart",total);
+        if (key == null) {
+            products = productDAO.findAll();
+            products1 = productDAO.findRecentProduct();
+        } else {
+            products = productDAO.findByName(key);
+            products1 = productDAO.findRecentProduct();
+        }
+        request.setAttribute("min",null);
+        request.setAttribute("max",null);
+        request.setAttribute("alo", products);
+        request.setAttribute("alo1", products1);
+        requestDispatcher.forward(request, response);
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -118,6 +156,8 @@ public class ProductServlet extends HttpServlet {
             products = productDAO.findByName(key);
             products1 = productDAO.findRecentProduct();
         }
+        request.setAttribute("min",null);
+        request.setAttribute("max",null);
         request.setAttribute("alo", products);
         request.setAttribute("alo1", products1);
         requestDispatcher.forward(request, response);
@@ -151,9 +191,84 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "showCate":
+                showCate1(request,response);
+                break;
+            default:
+                showListProduct1(request, response);
+                break;
         }
     }
-
+    private void showCate1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("storeByCategory.jsp");
+        int cateId = Integer.parseInt(request.getParameter("cateId"));
+        request.setAttribute("cateId",cateId);
+        String key = request.getParameter("key");
+        List<Product> products;
+        List<Product> products1;
+        List<Product> allProduct=productDAO.findAll();
+        HttpSession session = request.getSession();
+        session.setAttribute("allProduct",allProduct);
+        Account account = (Account) session.getAttribute("acc");
+        int id = account.getId();
+        List<Product> productsInCart = productDAO.findProductInCart(id);
+        List<CartDetail> details = cartDAO.findDetailById(id);
+        session.setAttribute("productsInCart",productsInCart);
+        session.setAttribute("cartDetails",details);
+        double total = 0;
+        for (int i = 0; i < productsInCart.size(); i++) {
+            total+= productsInCart.get(i).getPrice()* details.get(i).getQuantity();
+        }
+        session.setAttribute("totalInCart",total);
+        if (key == null) {
+            products = productDAO.findAll();
+            products1 = productDAO.findRecentProduct();
+        } else {
+            products = productDAO.findByName(key);
+            products1 = productDAO.findRecentProduct();
+        }
+        double min= Double.parseDouble(request.getParameter("min"))*100;
+        double max= Double.parseDouble(request.getParameter("max"))*100;
+        request.setAttribute("min",min);
+        request.setAttribute("max",max);
+        request.setAttribute("alo", products);
+        request.setAttribute("alo1", products1);
+        requestDispatcher.forward(request, response);
+    }
+    private void showListProduct1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("store.jsp");
+        String key = request.getParameter("key");
+        List<Product> products;
+        List<Product> products1;
+        List<Product> allProduct=productDAO.findAll();
+        HttpSession session = request.getSession();
+        session.setAttribute("allProduct",allProduct);
+        Account account = (Account) session.getAttribute("acc");
+        int id = account.getId();
+        List<Product> productsInCart = productDAO.findProductInCart(id);
+        List<CartDetail> details = cartDAO.findDetailById(id);
+        session.setAttribute("productsInCart",productsInCart);
+        session.setAttribute("cartDetails",details);
+        double total = 0;
+        for (int i = 0; i < productsInCart.size(); i++) {
+            total+= productsInCart.get(i).getPrice()* details.get(i).getQuantity();
+        }
+        session.setAttribute("totalInCart",total);
+        if (key == null) {
+            products = productDAO.findAll();
+            products1 = productDAO.findRecentProduct();
+        } else {
+            products = productDAO.findByName(key);
+            products1 = productDAO.findRecentProduct();
+        }
+        double min= Double.parseDouble(request.getParameter("min"))*100;
+        double max= Double.parseDouble(request.getParameter("max"))*100;
+        request.setAttribute("min",min);
+        request.setAttribute("max",max);
+        request.setAttribute("alo", products);
+        request.setAttribute("alo1", products1);
+        requestDispatcher.forward(request, response);
+    }
     private void createProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");

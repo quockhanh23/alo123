@@ -60,7 +60,7 @@ public class ProductDAO implements IProductDAO {
         List<Product> list = new ArrayList<>();
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
-                     ("select * from product order by id desc limit 3;")) {
+                     ("select * from product order by id desc limit 10;")) {
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {

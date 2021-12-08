@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -29,7 +28,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-        .product img{
+        .product img {
             width: 262px;
             height: 262px;
         }
@@ -46,10 +45,10 @@
                 <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
                 <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
             </ul>
-<%--            <ul class="header-links pull-right">--%>
-<%--                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>--%>
-<%--                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>--%>
-<%--            </ul>--%>
+            <%--            <ul class="header-links pull-right">--%>
+            <%--                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>--%>
+            <%--                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>--%>
+            <%--            </ul>--%>
             <ul class="header-links pull-right">
                 <c:if test="${sessionScope.acc != null}">
                     <li><a href="#"><i class="fa fa-dollar"></i> Wallet: ${sessionScope.acc.balance}</a></li>
@@ -112,7 +111,7 @@
                             <a style="width: 120px" href="/orders?action=showUserOrder">
                                 <i class="fa fa-heart-o"></i>
                                 <span>Your Order List</span>
-                                <div ></div>
+                                <div></div>
                             </a>
                         </div>
                         <!-- Cart -->
@@ -131,10 +130,13 @@
                                                 <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
                                             </div>
                                             <div class="product-body">
-                                                <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
-                                                <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
+                                                <h3 class="product-name"><a
+                                                        href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
+                                                <h4 class="product-price"><span
+                                                        class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}
+                                                </h4>
                                             </div>
-                                                <%--                                        <button class="delete"><i class="fa fa-close"></i></button>--%>
+
                                         </div>
                                     </c:forEach>
 
@@ -145,7 +147,7 @@
                                 </div>
                                 <div class="cart-btns">
                                     <a href="/carts?action=showCusCart">View Cart</a>
-                                    <a href="/orders">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="/orders">Checkout <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -224,22 +226,22 @@
 
                 <!-- aside Widget -->
                 <div class="aside">
-                    <form action="/products" method="post">
-                    <h3 class="aside-title">Price (Unit : *100$)</h3>
-                    <div class="price-filter">
-                        <div id="price-slider"></div>
-                        <div class="input-number price-min">
-                            <input id="price-min" value="1" name="min" type="number">
-                            <span class="qty-up">+</span>
-                            <span class="qty-down">-</span>
+                    <form action="/products?action=showCate&cateId=${cateId}" method="post">
+                        <h3 class="aside-title">Price (Unit : *100$)</h3>
+                        <div class="price-filter">
+                            <div id="price-slider"></div>
+                            <div class="input-number price-min">
+                                <input id="price-min" value="1" name="min" type="number">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
+                            </div>
+                            <span>-</span>
+                            <div class="input-number price-max">
+                                <input id="price-max" name="max" type="number">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
+                            </div>
                         </div>
-                        <span>-</span>
-                        <div class="input-number price-max">
-                            <input id="price-max" name="max" type="number">
-                            <span class="qty-up">+</span>
-                            <span class="qty-down">-</span>
-                        </div>
-                    </div>
                         <div>&ensp;</div>
                         <button type="submit" class="btn btn-danger">Search</button>
                     </form>
@@ -281,31 +283,8 @@
                 <div class="row">
                     <!-- product -->
                     <c:forEach var="cus" items="${alo}">
-                        <c:if test="${min == null}">
-                            <div class="col-md-4 col-xs-6">
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/${cus.img}" alt="">
-                                        <div class="product-label">
-                                            <span class="new">Hot!</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">${cus.categoryId}</p>
-                                        <h3 class="product-name"><a href="#">${cus.name} </a></h3>
-                                        <h4 class="product-price">${cus.price}$
-                                        </h4>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
-                                            <a href="/carts?action=addPToCart&id=${cus.id}">add to cart</a>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:if>
-                        <c:if test="${min != null}">
-                            <c:if test="${cus.price >= min && cus.price <= max}">
+                        <c:if test="${cateId ==1 && cus.categoryId == 'handgun'}">
+                            <c:if test="${min == null}">
                                 <div class="col-md-4 col-xs-6">
                                     <div class="product">
                                         <div class="product-img">
@@ -328,6 +307,181 @@
                                     </div>
                                 </div>
                             </c:if>
+                            <c:if test="${min != null}">
+                                <c:if test="${cus.price >= min && cus.price <= max}">
+                                    <div class="col-md-4 col-xs-6">
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="./img/${cus.img}" alt="">
+                                                <div class="product-label">
+                                                    <span class="new">Hot!</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-body">
+                                                <p class="product-category">${cus.categoryId}</p>
+                                                <h3 class="product-name"><a href="#">${cus.name} </a></h3>
+                                                <h4 class="product-price">${cus.price}$
+                                                </h4>
+                                            </div>
+                                            <div class="add-to-cart">
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
+                                                    <a href="/carts?action=addPToCart&id=${cus.id}">add to cart</a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:if>
+                            </c:if>
+                        </c:if>
+                        <c:if test="${cateId ==2 && cus.categoryId == 'rifle'}">
+                            <c:if test="${min == null}">
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <img src="./img/${cus.img}" alt="">
+                                            <div class="product-label">
+                                                <span class="new">Hot!</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">${cus.categoryId}</p>
+                                            <h3 class="product-name"><a href="#">${cus.name} </a></h3>
+                                            <h4 class="product-price">${cus.price}$
+                                            </h4>
+                                        </div>
+                                        <div class="add-to-cart">
+                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
+                                                <a href="/carts?action=addPToCart&id=${cus.id}">add to cart</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:if>
+                            <c:if test="${min != null}">
+                                <c:if test="${cus.price >= min && cus.price <= max}">
+                                    <div class="col-md-4 col-xs-6">
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="./img/${cus.img}" alt="">
+                                                <div class="product-label">
+                                                    <span class="new">Hot!</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-body">
+                                                <p class="product-category">${cus.categoryId}</p>
+                                                <h3 class="product-name"><a href="#">${cus.name} </a></h3>
+                                                <h4 class="product-price">${cus.price}$
+                                                </h4>
+                                            </div>
+                                            <div class="add-to-cart">
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
+                                                    <a href="/carts?action=addPToCart&id=${cus.id}">add to cart</a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:if>
+                            </c:if>
+                        </c:if>
+                        <c:if test="${cateId ==3 && cus.categoryId == 'shotgun'}">
+                            <c:if test="${min == null}">
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <img src="./img/${cus.img}" alt="">
+                                            <div class="product-label">
+                                                <span class="new">Hot!</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">${cus.categoryId}</p>
+                                            <h3 class="product-name"><a href="#">${cus.name} </a></h3>
+                                            <h4 class="product-price">${cus.price}$
+                                            </h4>
+                                        </div>
+                                        <div class="add-to-cart">
+                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
+                                                <a href="/carts?action=addPToCart&id=${cus.id}">add to cart</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:if>
+                            <c:if test="${min != null}">
+                                <c:if test="${cus.price >= min && cus.price <= max}">
+                                    <div class="col-md-4 col-xs-6">
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="./img/${cus.img}" alt="">
+                                                <div class="product-label">
+                                                    <span class="new">Hot!</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-body">
+                                                <p class="product-category">${cus.categoryId}</p>
+                                                <h3 class="product-name"><a href="#">${cus.name} </a></h3>
+                                                <h4 class="product-price">${cus.price}$
+                                                </h4>
+                                            </div>
+                                            <div class="add-to-cart">
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
+                                                    <a href="/carts?action=addPToCart&id=${cus.id}">add to cart</a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:if>
+                            </c:if>
+                        </c:if>
+                        <c:if test="${cateId ==4 && cus.categoryId == 'sniper rifle'}">
+                            <c:if test="${min == null}">
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <img src="./img/${cus.img}" alt="">
+                                            <div class="product-label">
+                                                <span class="new">Hot!</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">${cus.categoryId}</p>
+                                            <h3 class="product-name"><a href="#">${cus.name} </a></h3>
+                                            <h4 class="product-price">${cus.price}$
+                                            </h4>
+                                        </div>
+                                        <div class="add-to-cart">
+                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
+                                                <a href="/carts?action=addPToCart&id=${cus.id}">add to cart</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:if>
+                            <c:if test="${min != null}">
+                                <c:if test="${cus.price >= min && cus.price <= max}">
+                                    <div class="col-md-4 col-xs-6">
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="./img/${cus.img}" alt="">
+                                                <div class="product-label">
+                                                    <span class="new">Hot!</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-body">
+                                                <p class="product-category">${cus.categoryId}</p>
+                                                <h3 class="product-name"><a href="#">${cus.name} </a></h3>
+                                                <h4 class="product-price">${cus.price}$
+                                                </h4>
+                                            </div>
+                                            <div class="add-to-cart">
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
+                                                    <a href="/carts?action=addPToCart&id=${cus.id}">add to cart</a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:if>
+                            </c:if>
                         </c:if>
 
                         <!-- /product -->
@@ -345,7 +499,6 @@
     <!-- /container -->
 </div>
 <!-- /SECTION -->
-
 
 
 <!-- FOOTER -->
@@ -430,13 +583,13 @@
                         <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
                         <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
                     </ul>
-<%--                    <span class="copyright">--%>
-<%--								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--%>
-<%--								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i--%>
-<%--                            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"--%>
-<%--                                                                                target="_blank">Colorlib</a>--%>
-<%--                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--%>
-<%--							</span>--%>
+                    <%--                    <span class="copyright">--%>
+                    <%--								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--%>
+                    <%--								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i--%>
+                    <%--                            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"--%>
+                    <%--                                                                                target="_blank">Colorlib</a>--%>
+                    <%--                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--%>
+                    <%--							</span>--%>
                 </div>
             </div>
             <!-- /row -->
