@@ -87,22 +87,17 @@
                 <div class="col-md-3">
                     <div class="header-logo">
                         <a href="#" class="logo">
-                            <img src="./img/logo.png" alt="">
+                            <img width="80px" height="80px" src="./img/logo1.png" alt="">
                         </a>
                     </div>
                 </div>
                 <!-- /LOGO -->
 
                 <!-- SEARCH BAR -->
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="header-search">
                         <form>
-                            <select class="input-select">
-                                <option value="0">All Categories</option>
-                                <option value="1">Category 01</option>
-                                <option value="1">Category 02</option>
-                            </select>
-                            <input class="input" placeholder="Search here">
+                            <input style="width: 240px !important;" class="input" placeholder="Search here">
                             <button class="search-btn">Search</button>
                         </form>
                     </div>
@@ -110,16 +105,25 @@
                 <!-- /SEARCH BAR -->
 
                 <!-- ACCOUNT -->
-                <div class="col-md-3 clearfix">
+                <div class="col-md-5 clearfix">
                     <div class="header-ctn">
                         <!-- Wishlist -->
-<%--                        <div>--%>
-<%--                            <a href="#">--%>
-<%--                                <i class="fa fa-heart-o"></i>--%>
-<%--                                <span>Your Wishlist</span>--%>
-<%--                                <div class="qty">2</div>--%>
-<%--                            </a>--%>
-<%--                        </div>--%>
+                        <div>
+                            <a style="width: 120px" href="#">
+                                <i class="fa fa-heart-o"></i>
+                                <span>Deposit money</span>
+                                <div></div>
+                            </a>
+                        </div>
+                        <!-- /Wishlist -->
+                        <!-- Wishlist -->
+                        <div>
+                            <a style="width: 120px" href="/orders?action=showUserOrder">
+                                <i class="fa fa-heart-o"></i>
+                                <span>Your Order List</span>
+                                <div ></div>
+                            </a>
+                        </div>
                         <!-- /Wishlist -->
 
                         <!-- Cart -->
@@ -133,16 +137,16 @@
                                 <div class="cart-list">
 
                                     <c:forEach var="i" begin="0" end="${sessionScope.productsInCart.size()-1}">
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
+                                        <div class="product-widget">
+                                            <div class="product-img">
+                                                <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
+                                            </div>
+                                            <div class="product-body">
+                                                <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
+                                                <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
+                                            </div>
+                                                <%--                                        <button class="delete"><i class="fa fa-close"></i></button>--%>
                                         </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
-                                            <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
-                                        </div>
-<%--                                        <button class="delete"><i class="fa fa-close"></i></button>--%>
-                                    </div>
                                     </c:forEach>
 
                                 </div>
@@ -152,7 +156,7 @@
                                 </div>
                                 <div class="cart-btns">
                                     <a href="/carts?action=showCusCart">View Cart</a>
-                                    <a href="/orders">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>

@@ -85,15 +85,10 @@
                 <!-- /LOGO -->
 
                 <!-- SEARCH BAR -->
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="header-search">
                         <form>
-<%--                            <select class="input-select">--%>
-<%--                                <option value="0">All Categories</option>--%>
-<%--                                <option value="1">Category 01</option>--%>
-<%--                                <option value="1">Category 02</option>--%>
-<%--                            </select>--%>
-                            <input class="input" placeholder="Search here">
+                            <input style="width: 240px !important;" class="input" placeholder="Search here">
                             <button class="search-btn">Search</button>
                         </form>
                     </div>
@@ -101,10 +96,25 @@
                 <!-- /SEARCH BAR -->
 
                 <!-- ACCOUNT -->
-                <div class="col-md-3 clearfix">
+                <div class="col-md-5 clearfix">
                     <div class="header-ctn">
-
-
+                        <!-- Wishlist -->
+                        <div>
+                            <a style="width: 120px" href="#">
+                                <i class="fa fa-heart-o"></i>
+                                <span>Deposit money</span>
+                                <div></div>
+                            </a>
+                        </div>
+                        <!-- /Wishlist -->
+                        <!-- Wishlist -->
+                        <div>
+                            <a style="width: 120px" href="/orders?action=showUserOrder">
+                                <i class="fa fa-heart-o"></i>
+                                <span>Your Order List</span>
+                                <div ></div>
+                            </a>
+                        </div>
                         <!-- Cart -->
                         <div class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">

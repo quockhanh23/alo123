@@ -1,7 +1,8 @@
 package service;
 
-import model.Cart;
 import model.Order;
+import model.OrderDetail;
+import model.TotalBill;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -38,8 +39,9 @@ public class OrderDAO implements IOrderDAO {
                 int id = rs.getInt("id");
                 int acc = rs.getInt("accountId");
                 String time = rs.getString("time");
-                int status = rs.getInt("status");
-                list.add(new Order(id, acc, time, status));
+                String status = rs.getString("status");
+                String address = rs.getString("address");
+                list.add(new Order(id, acc, time, status,address));
             }
         } catch (SQLException e) {
             System.out.println("");
@@ -51,11 +53,12 @@ public class OrderDAO implements IOrderDAO {
     public void add(Order order) throws SQLException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
-                     ("insert into orderofcustomer(id, accountId, time, status )  values (?,?,?,?) ")) {
+                     ("insert into orderofcustomer(id, accountId, time, status,address )  values (?,?,?,?,?) ")) {
             preparedStatement.setInt(1, order.getId());
             preparedStatement.setInt(2, order.getAccountId());
             preparedStatement.setString(3, order.getTime());
-            preparedStatement.setInt(4, order.getStatus());
+            preparedStatement.setString(4, order.getStatus());
+            preparedStatement.setString(5, order.getAddress());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error");
@@ -73,7 +76,62 @@ public class OrderDAO implements IOrderDAO {
         }
         return rowDeleted;
     }
-
+    @Override
+    public List<TotalBill> findAllTotal(int id){
+        List<TotalBill> list= new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select  total from totalbill1 where accountId = ?")) {
+            System.out.println(preparedStatement);
+            preparedStatement.setInt(1,id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                double total = rs.getDouble("total");
+                list.add(new TotalBill(total));
+            }
+        } catch (SQLException e) {
+            System.out.println("");
+        }
+        return list;
+    }
+    @Override
+    public List<Order> findOrder(int id){
+        List<Order> list = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select  * from orderofcustomer where accountId = 1 group by id")) {
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id1 = rs.getInt("id");
+                int acc = rs.getInt("accountId");
+                String time = rs.getString("time");
+                String status = rs.getString("status");
+                String address = rs.getString("address");
+                list.add(new Order(id1, acc, time, status,address));
+            }
+        } catch (SQLException e) {
+            System.out.println("");
+        }
+        return list;
+    }
+    @Override
+    public List<OrderDetail> findDetailById(int id){
+        List<OrderDetail> list = new ArrayList<>();
+//        try (Connection connection = getConnection();
+//             PreparedStatement preparedStatement = connection.prepareStatement
+//                     ("select  * from orderdetail where accountId = 1 group by id")) {
+//            System.out.println(preparedStatement);
+//            ResultSet rs = preparedStatement.executeQuery();
+//            while (rs.next()) {
+//
+//                list.add(new OrderDetail(orderId, productId, quantity));
+//            }
+//        } catch (SQLException e) {
+//            System.out.println("");
+//        }
+        return list;
+    }
     @Override
     public boolean update(Order order) throws SQLException {
         boolean rowUpdated;
@@ -82,7 +140,7 @@ public class OrderDAO implements IOrderDAO {
                      ("update orderofcustomer set accountId =?,time=?,status=? where id = ?;")) {
             preparedStatement.setInt(1, order.getAccountId());
             preparedStatement.setString(2, order.getTime());
-            preparedStatement.setInt(3, order.getStatus());
+            preparedStatement.setString(3, order.getStatus());
             preparedStatement.setInt(4, order.getId());
             rowUpdated = preparedStatement.executeUpdate() > 0;
         }
@@ -102,8 +160,9 @@ public class OrderDAO implements IOrderDAO {
                 int id1 = Integer.parseInt(resultSet.getString("id"));
                 int acc = Integer.parseInt(resultSet.getString("accountId"));
                 String time = resultSet.getString("time");
-                int stt = Integer.parseInt(resultSet.getString("status"));
-                order = new Order(id1, acc, time, stt);
+                String stt = resultSet.getString("status");
+                String address = resultSet.getString("address");
+                order = new Order(id1, acc, time, stt,address);
             }
         } catch (SQLException ignored) {
         }

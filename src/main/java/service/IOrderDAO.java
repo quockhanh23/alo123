@@ -1,7 +1,8 @@
 package service;
 
-import model.Cart;
 import model.Order;
+import model.OrderDetail;
+import model.TotalBill;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -16,5 +17,7 @@ public interface IOrderDAO {
     boolean update(Order order) throws SQLException;
 
     public Order findById(int id);
-
+    public List<Order> findOrder(int id);
+    public List<OrderDetail> findDetailById(int id);
+    public List<TotalBill> findAllTotal(int id);
 }
