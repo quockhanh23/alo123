@@ -112,7 +112,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty">3</div>
+                                <div class="qty">0</div>
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
@@ -203,10 +203,10 @@
             <div class="col-md-4 col-xs-6">
                 <div class="shop">
                     <div class="shop-img">
-                        <img src="./img/shop01.png" alt="">
+                        <img src="./img/product34.png" alt="">
                     </div>
                     <div class="shop-body">
-                        <h3>Laptop<br>Collection</h3>
+                        <h3>Snipe<br>Collection</h3>
                         <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -217,10 +217,10 @@
             <div class="col-md-4 col-xs-6">
                 <div class="shop">
                     <div class="shop-img">
-                        <img src="./img/shop03.png" alt="">
+                        <img src="./img/product18.png" alt="">
                     </div>
                     <div class="shop-body">
-                        <h3>Accessories<br>Collection</h3>
+                        <h3>Shot gun<br>Collection</h3>
                         <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -231,10 +231,10 @@
             <div class="col-md-4 col-xs-6">
                 <div class="shop">
                     <div class="shop-img">
-                        <img src="./img/shop02.png" alt="">
+                        <img src="./img/product26.png" alt="">
                     </div>
                     <div class="shop-body">
-                        <h3>Cameras<br>Collection</h3>
+                        <h3>Rifle<br>Collection</h3>
                         <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
