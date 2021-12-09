@@ -121,12 +121,13 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty">${sessionScope.productsInCart.size()}</div>
+                                <div class="qty">${sum}</div>
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
 
                                     <c:forEach var="i" begin="0" end="${sessionScope.productsInCart.size()-1}">
+                                        <c:if test="${sessionScope.cartDetails.get(i).quantity >0}">
                                         <div class="product-widget">
                                             <div class="product-img">
                                                 <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
@@ -135,13 +136,13 @@
                                                 <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
                                                 <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
                                             </div>
-                                                <%--                                        <button class="delete"><i class="fa fa-close"></i></button>--%>
                                         </div>
+                                        </c:if>
                                     </c:forEach>
 
                                 </div>
                                 <div class="cart-summary">
-                                    <small>${sessionScope.productsInCart.size()} Item(s) selected</small>
+                                    <small>${sum} Item(s) selected</small>
                                     <h5>SUBTOTAL: $${sessionScope.totalInCart}</h5>
                                 </div>
                                 <div class="cart-btns">
@@ -180,7 +181,7 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/homes">Home</a></li>
                 <li><a href="/products">All product</a></li>
                 <li><a href="/products?action=showCate&cateId=1">Hand gun</a></li>
                 <li><a href="/products?action=showCate&cateId=2">Rifle</a></li>
@@ -255,6 +256,7 @@
                 <div class="aside">
                     <h3 class="aside-title">New Product</h3>
                     <c:forEach var="cus" items="${alo1}">
+                        <a href="/products?action=viewProduct&id=${cus.id}">
                         <div class="product-widget">
                             <div class="product-img">
                                 <img src="./img/${cus.img}" alt="">
@@ -266,6 +268,7 @@
                                 </h4>
                             </div>
                         </div>
+                        </a>
                     </c:forEach>
 
                 </div>
@@ -283,6 +286,7 @@
                     <!-- product -->
                     <c:forEach var="cus" items="${alo}">
                         <c:if test="${min == null}">
+                    <a href="/products?action=viewProduct&id=${cus.id}">
                             <div class="col-md-4 col-xs-6">
                                 <div class="product">
                                     <div class="product-img">
@@ -304,9 +308,11 @@
                                     </div>
                                 </div>
                             </div>
+                    </a>
                         </c:if>
                         <c:if test="${min != null}">
                             <c:if test="${cus.price >= min && cus.price <= max}">
+                        <a href="/products?action=viewProduct&id=${cus.id}">
                                 <div class="col-md-4 col-xs-6">
                                     <div class="product">
                                         <div class="product-img">
@@ -328,6 +334,7 @@
                                         </div>
                                     </div>
                                 </div>
+                        </a>
                             </c:if>
                         </c:if>
 

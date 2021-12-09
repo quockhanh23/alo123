@@ -21,4 +21,6 @@ public interface IOrderDAO {
     public List<OrderDetail> findDetailById(int id);
     public List<TotalBill> findAllTotal(int id);
     public Order findNewOrder(int id);
+    public TotalBill findTotal(int id,int cusId);
+    void pay(int id);
 }

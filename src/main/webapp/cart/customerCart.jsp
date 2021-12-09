@@ -131,27 +131,28 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty">${sessionScope.productsInCart.size()}</div>
+                                <div class="qty">${sum}</div>
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
 
                                     <c:forEach var="i" begin="0" end="${sessionScope.productsInCart.size()-1}">
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
+                                        <c:if test="${sessionScope.cartDetails.get(i).quantity >0}">
+                                            <div class="product-widget">
+                                                <div class="product-img">
+                                                    <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
+                                                </div>
+                                                <div class="product-body">
+                                                    <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
+                                                    <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
+                                                </div>
                                             </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
-                                                <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
-                                            </div>
-                                                <%--                                        <button class="delete"><i class="fa fa-close"></i></button>--%>
-                                        </div>
+                                        </c:if>
                                     </c:forEach>
 
                                 </div>
                                 <div class="cart-summary">
-                                    <small>${sessionScope.productsInCart.size()} Item(s) selected</small>
+                                    <small>${sum} Item(s) selected</small>
                                     <h5>SUBTOTAL: $${sessionScope.totalInCart}</h5>
                                 </div>
                                 <div class="cart-btns">
@@ -190,12 +191,12 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/homes">Home</a></li>
                 <li><a href="/products">All product</a></li>
-                <li><a href="#">Hand gun</a></li>
-                <li><a href="#">Rifle</a></li>
-                <li><a href="#">Shot gun</a></li>
-                <li><a href="#">Snipe</a></li>
+                <li><a href="/products?action=showCate&cateId=1">Hand gun</a></li>
+                <li><a href="/products?action=showCate&cateId=2">Rifle</a></li>
+                <li><a href="/products?action=showCate&cateId=3">Shot gun</a></li>
+                <li><a href="/products?action=showCate&cateId=4">Snipe</a></li>
             </ul>
             <!-- /NAV -->
         </div>

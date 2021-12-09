@@ -120,35 +120,33 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty">${sessionScope.productsInCart.size()}</div>
+                                <div class="qty">${sum}</div>
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
 
                                     <c:forEach var="i" begin="0" end="${sessionScope.productsInCart.size()-1}">
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
+                                        <c:if test="${sessionScope.cartDetails.get(i).quantity >0}">
+                                            <div class="product-widget">
+                                                <div class="product-img">
+                                                    <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
+                                                </div>
+                                                <div class="product-body">
+                                                    <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
+                                                    <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
+                                                </div>
                                             </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a
-                                                        href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
-                                                <h4 class="product-price"><span
-                                                        class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}
-                                                </h4>
-                                            </div>
-
-                                        </div>
+                                        </c:if>
                                     </c:forEach>
 
                                 </div>
                                 <div class="cart-summary">
-                                    <small>${sessionScope.productsInCart.size()} Item(s) selected</small>
+                                    <small>${sum} Item(s) selected</small>
                                     <h5>SUBTOTAL: $${sessionScope.totalInCart}</h5>
                                 </div>
                                 <div class="cart-btns">
                                     <a href="/carts?action=showCusCart">View Cart</a>
-                                    <a href="/orders">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="/orders">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +180,7 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/homes">Home</a></li>
                 <li><a href="/products">All product</a></li>
                 <li><a href="/products?action=showCate&cateId=1">Hand gun</a></li>
                 <li><a href="/products?action=showCate&cateId=2">Rifle</a></li>
@@ -286,6 +284,7 @@
                     <c:forEach var="cus" items="${alo}">
                         <c:if test="${cateId ==1 && cus.categoryId == 'handgun'}">
                             <c:if test="${min == null}">
+                    <a href="/products?action=viewProduct&id=${cus.id}">
                                 <div class="col-md-4 col-xs-6">
                                     <div class="product">
                                         <div class="product-img">
@@ -307,9 +306,11 @@
                                         </div>
                                     </div>
                                 </div>
+                    </a>
                             </c:if>
                             <c:if test="${min != null}">
                                 <c:if test="${cus.price >= min && cus.price <= max}">
+                    <a href="/products?action=viewProduct&id=${cus.id}">
                                     <div class="col-md-4 col-xs-6">
                                         <div class="product">
                                             <div class="product-img">
@@ -331,11 +332,13 @@
                                             </div>
                                         </div>
                                     </div>
+                    </a>
                                 </c:if>
                             </c:if>
                         </c:if>
                         <c:if test="${cateId ==2 && cus.categoryId == 'rifle'}">
                             <c:if test="${min == null}">
+                    <a href="/products?action=viewProduct&id=${cus.id}">
                                 <div class="col-md-4 col-xs-6">
                                     <div class="product">
                                         <div class="product-img">
@@ -357,9 +360,11 @@
                                         </div>
                                     </div>
                                 </div>
+                    </a>
                             </c:if>
                             <c:if test="${min != null}">
                                 <c:if test="${cus.price >= min && cus.price <= max}">
+                    <a href="/products?action=viewProduct&id=${cus.id}">
                                     <div class="col-md-4 col-xs-6">
                                         <div class="product">
                                             <div class="product-img">
@@ -381,11 +386,13 @@
                                             </div>
                                         </div>
                                     </div>
+                    </a>
                                 </c:if>
                             </c:if>
                         </c:if>
                         <c:if test="${cateId ==3 && cus.categoryId == 'shotgun'}">
                             <c:if test="${min == null}">
+                    <a href="/products?action=viewProduct&id=${cus.id}">
                                 <div class="col-md-4 col-xs-6">
                                     <div class="product">
                                         <div class="product-img">
@@ -407,9 +414,11 @@
                                         </div>
                                     </div>
                                 </div>
+                    </a>
                             </c:if>
                             <c:if test="${min != null}">
                                 <c:if test="${cus.price >= min && cus.price <= max}">
+                    <a href="/products?action=viewProduct&id=${cus.id}">
                                     <div class="col-md-4 col-xs-6">
                                         <div class="product">
                                             <div class="product-img">
@@ -431,11 +440,13 @@
                                             </div>
                                         </div>
                                     </div>
+                    </a>
                                 </c:if>
                             </c:if>
                         </c:if>
                         <c:if test="${cateId ==4 && cus.categoryId == 'sniper rifle'}">
                             <c:if test="${min == null}">
+                    <a href="/products?action=viewProduct&id=${cus.id}">
                                 <div class="col-md-4 col-xs-6">
                                     <div class="product">
                                         <div class="product-img">
@@ -457,9 +468,11 @@
                                         </div>
                                     </div>
                                 </div>
+                    </a>
                             </c:if>
                             <c:if test="${min != null}">
                                 <c:if test="${cus.price >= min && cus.price <= max}">
+                    <a href="/products?action=viewProduct&id=${cus.id}">
                                     <div class="col-md-4 col-xs-6">
                                         <div class="product">
                                             <div class="product-img">
@@ -481,6 +494,7 @@
                                             </div>
                                         </div>
                                     </div>
+                    </a>
                                 </c:if>
                             </c:if>
                         </c:if>

@@ -53,6 +53,18 @@ public class AccountDAO implements IAccountDAO {
 
     }
     @Override
+    public void pay(int id,double total){
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("update account set balance= balance - ? where id = ?;")) {
+            preparedStatement.setDouble(1,total);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    @Override
     public List<Account> findAll() {
         List<Account> accounts = new ArrayList<>();
         try (Connection connection = getConnection();
@@ -112,6 +124,29 @@ public class AccountDAO implements IAccountDAO {
 
     @Override
     public Account findById(int id) {
-        return null;
+        Account account =null;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("select * from account where id= ?");) {
+            System.out.println(preparedStatement);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int id1 = rs.getInt("id");
+                String name = rs.getString("name");
+                String password = rs.getString("password");
+                String rePassword = rs.getString("re_password");
+                String phoneNumber = rs.getString("phoneNumber");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                int roleId = rs.getInt("roleId");
+                double balance = rs.getDouble("balance");
+                int statusId = rs.getInt("statusId");
+                int age = rs.getInt("age");
+                account=new Account(id1, name, password,rePassword,phoneNumber,email,address,roleId,balance,statusId,age);
+            }
+        } catch (SQLException e) {
+        }
+        return account;
     }
 }

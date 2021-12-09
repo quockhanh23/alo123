@@ -26,7 +26,17 @@ public class OrderDAO implements IOrderDAO {
         }
         return connection;
     }
-
+    public void pay(int id){
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("update orderofcustomer set status=? where id = ?;")) {
+            preparedStatement.setString(1,"paid");
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
     @Override
     public List<Order> findAll() {
         List<Order> list = new ArrayList<>();
@@ -76,6 +86,24 @@ public class OrderDAO implements IOrderDAO {
         return rowDeleted;
     }
     @Override
+    public TotalBill findTotal(int id,int cusId){
+        TotalBill totalBill = null;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement
+                     ("select  total from totalbill1 where accountId = ? and orderId=?")) {
+            System.out.println(preparedStatement);
+            preparedStatement.setInt(1,id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                double total = rs.getDouble("total");
+                totalBill= new TotalBill(total);
+            }
+        } catch (SQLException e) {
+            System.out.println("");
+        }
+        return totalBill;
+    }
+    @Override
     public List<TotalBill> findAllTotal(int id){
         List<TotalBill> list= new ArrayList<>();
         try (Connection connection = getConnection();
@@ -98,8 +126,9 @@ public class OrderDAO implements IOrderDAO {
         List<Order> list = new ArrayList<>();
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement
-                     ("select  * from orderofcustomer where accountId = 1 group by id")) {
+                     ("select  * from orderofcustomer where accountId = ? group by id")) {
             System.out.println(preparedStatement);
+            preparedStatement.setInt(1,id);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int id1 = rs.getInt("id");

@@ -178,12 +178,12 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/homes">Home</a></li>
                 <li><a href="/products">All product</a></li>
-                <li><a href="#">Hand gun</a></li>
-                <li><a href="#">Rifle</a></li>
-                <li><a href="#">Shot gun</a></li>
-                <li><a href="#">Snipe</a></li>
+                <li><a href="/products?action=showCate&cateId=1">Hand gun</a></li>
+                <li><a href="/products?action=showCate&cateId=2">Rifle</a></li>
+                <li><a href="/products?action=showCate&cateId=3">Shot gun</a></li>
+                <li><a href="/products?action=showCate&cateId=4">Snipe</a></li>
             </ul>
             <!-- /NAV -->
         </div>

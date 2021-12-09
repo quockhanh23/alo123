@@ -17,4 +17,5 @@ public interface IAccountDAO {
     boolean update(Account account) throws SQLException;
 
     public Account findById(int id);
+    public void pay(int id,double total);
 }

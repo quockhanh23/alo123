@@ -142,6 +142,15 @@ public class ProductServlet extends HttpServlet {
         int id = account.getId();
         List<Product> productsInCart = productDAO.findProductInCart(id);
         List<CartDetail> details = cartDAO.findDetailById(id);
+        int sum = 0;
+        if (details.size()>0){
+            for (int i = 0; i < details.size(); i++) {
+                if(details.get(i).getQuantity()>0){
+                    sum+=1;
+                }
+            }
+        }
+        session.setAttribute("sum",sum);
         session.setAttribute("productsInCart",productsInCart);
         session.setAttribute("cartDetails",details);
         double total = 0;
@@ -195,7 +204,7 @@ public class ProductServlet extends HttpServlet {
                 showCate1(request,response);
                 break;
             default:
-                showListProduct1(request, response);
+                showListProduct(request, response);
                 break;
         }
     }

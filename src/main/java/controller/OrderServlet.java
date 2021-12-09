@@ -20,6 +20,7 @@ public class OrderServlet extends HttpServlet {
     private IProductDAO productDAO = new ProductDAO();
     private ICartDAO cartDAO = new CartDAO();
     private IOrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+    private IAccountDAO accountDAO =new AccountDAO();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -50,9 +51,30 @@ public class OrderServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "PayOrder":
+                payOrder(request,response);
+                break;
+            case "showOrder":
+                showOrder(request,response);
+                break;
             default:
                 showUserOrder(request,response);
         }
+    }
+
+    private void payOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+        int cusId = account.getId();
+        int id = Integer.parseInt(request.getParameter("orderId"));
+        orderDAO.pay(id);
+        double total =orderDAO.findTotal(id,cusId).getTotal();
+        accountDAO.pay(cusId,total);
+        List<Order> orders = orderDAO.findOrder(cusId);
+        Account account1 = accountDAO.findById(cusId);
+        session.setAttribute("acc",account1);
+        session.setAttribute("orderList", orders);
+        response.sendRedirect("/orders");
     }
 
     private void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {

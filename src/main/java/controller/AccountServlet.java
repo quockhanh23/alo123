@@ -92,7 +92,7 @@ public class AccountServlet extends HttpServlet {
         }else {
             HttpSession session = request.getSession();
             session.setAttribute("acc",account);
-            request.getRequestDispatcher("index.jsp").forward(request,response);
+            request.getRequestDispatcher("/products").forward(request,response);
         }
     }
 }

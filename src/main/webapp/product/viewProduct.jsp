@@ -56,8 +56,18 @@
                 <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                <c:if test="${sessionScope.acc != null}">
+                    <li><a href="#"><i class="fa fa-dollar"></i> Wallet: ${sessionScope.acc.balance}</a></li>
+                    <li><a href="#"><i class="fa fa-user-o"></i> Hello ${sessionScope.acc.name}</a></li>
+                    <c:if test="${sessionScope.acc.roleId == 1}">
+                        <li><a href="/manager1"><i class="fa fa-user-o"></i> Manager</a></li>
+                    </c:if>
+                    <li><a href="/accounts?action=logout"><i class="fa"></i> Logout</a></li>
+                </c:if>
+                <c:if test="${sessionScope.acc == null}">
+                    <li><a href="#"><i class="fa fa-user-o"></i> Guest</a></li>
+                    <li><a href="/accounts?action=login"><i class="fa"></i> Login</a></li>
+                </c:if>
             </ul>
         </div>
     </div>
@@ -105,32 +115,33 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty">${sessionScope.productsInCart.size()}</div>
+                                <div class="qty">${sum}</div>
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
 
                                     <c:forEach var="i" begin="0" end="${sessionScope.productsInCart.size()-1}">
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
+                                        <c:if test="${sessionScope.cartDetails.get(i).quantity >0}">
+                                            <div class="product-widget">
+                                                <div class="product-img">
+                                                    <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
+                                                </div>
+                                                <div class="product-body">
+                                                    <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
+                                                    <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
+                                                </div>
                                             </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
-                                                <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
-                                            </div>
-                                                <%--                                        <button class="delete"><i class="fa fa-close"></i></button>--%>
-                                        </div>
+                                        </c:if>
                                     </c:forEach>
 
                                 </div>
                                 <div class="cart-summary">
-                                    <small>${sessionScope.productsInCart.size()} Item(s) selected</small>
+                                    <small>${sum} Item(s) selected</small>
                                     <h5>SUBTOTAL: $${sessionScope.totalInCart}</h5>
                                 </div>
                                 <div class="cart-btns">
                                     <a href="/carts?action=showCusCart">View Cart</a>
-                                    <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="/orders">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -164,13 +175,12 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Hot Deals</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Laptops</a></li>
-                <li><a href="#">Smartphones</a></li>
-                <li><a href="#">Cameras</a></li>
-                <li><a href="#">Accessories</a></li>
+                <li class="active"><a href="/homes">Home</a></li>
+                <li><a href="/products">All product</a></li>
+                <li><a href="/products?action=showCate&cateId=1">Hand gun</a></li>
+                <li><a href="/products?action=showCate&cateId=2">Rifle</a></li>
+                <li><a href="/products?action=showCate&cateId=3">Shot gun</a></li>
+                <li><a href="/products?action=showCate&cateId=4">Snipe</a></li>
             </ul>
             <!-- /NAV -->
         </div>
@@ -189,10 +199,8 @@
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">All Categories</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Headphones</a></li>
-                    <li class="active">Product name goes here</li>
+                    <li><a href="#">All Product</a></li>
+                    <li class="active">${alo1.name}</li>
                 </ul>
             </div>
         </div>
@@ -248,14 +256,14 @@
                     </div>
                     <p>${alo1.description}</p>
                     <div class="add-to-cart">
-                        <div class="qty-label">
-                            Qty
-                            <div class="input-number">
-                                <input type="number">
-                                <span class="qty-up">+</span>
-                                <span class="qty-down">-</span>
-                            </div>
-                        </div>
+<%--                        <div class="qty-label">--%>
+<%--                            Qty--%>
+<%--                            <div class="input-number">--%>
+<%--                                <input type="number">--%>
+<%--                                <span class="qty-up">+</span>--%>
+<%--                                <span class="qty-down">-</span>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                         <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                     </div>
 
@@ -278,7 +286,7 @@
                         <div id="tab1" class="tab-pane fade in active">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <p>&ensp;</p>
                                 </div>
                             </div>
                         </div>

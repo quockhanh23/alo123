@@ -126,32 +126,33 @@
               <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                 <i class="fa fa-shopping-cart"></i>
                 <span>Your Cart</span>
-                <div class="qty">${sessionScope.productsInCart.size()}</div>
+                <div class="qty">${sum}</div>
               </a>
               <div class="cart-dropdown">
                 <div class="cart-list">
 
                   <c:forEach var="i" begin="0" end="${sessionScope.productsInCart.size()-1}">
-                    <div class="product-widget">
-                      <div class="product-img">
-                        <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
+                    <c:if test="${sessionScope.cartDetails.get(i).quantity >0}">
+                      <div class="product-widget">
+                        <div class="product-img">
+                          <img src="./img/${sessionScope.productsInCart.get(i).img}" alt="">
+                        </div>
+                        <div class="product-body">
+                          <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
+                          <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
+                        </div>
                       </div>
-                      <div class="product-body">
-                        <h3 class="product-name"><a href="#">${sessionScope.productsInCart.get(i).name}</a></h3>
-                        <h4 class="product-price"><span class="qty">${sessionScope.cartDetails.get(i).quantity}x</span>$${sessionScope.productsInCart.get(i).price}</h4>
-                      </div>
-                        <%--                                        <button class="delete"><i class="fa fa-close"></i></button>--%>
-                    </div>
+                    </c:if>
                   </c:forEach>
 
                 </div>
                 <div class="cart-summary">
-                  <small>${sessionScope.productsInCart.size()} Item(s) selected</small>
+                  <small>${sum} Item(s) selected</small>
                   <h5>SUBTOTAL: $${sessionScope.totalInCart}</h5>
                 </div>
                 <div class="cart-btns">
                   <a href="/carts?action=showCusCart">View Cart</a>
-                  <a href="/orders">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="/orders?action=showOrder">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
             </div>
@@ -185,12 +186,12 @@
     <div id="responsive-nav">
       <!-- NAV -->
       <ul class="main-nav nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="/homes">Home</a></li>
         <li><a href="/products">All product</a></li>
-        <li><a href="#">Hand gun</a></li>
-        <li><a href="#">Rifle</a></li>
-        <li><a href="#">Shot gun</a></li>
-        <li><a href="#">Snipe</a></li>
+        <li><a href="/products?action=showCate&cateId=1">Hand gun</a></li>
+        <li><a href="/products?action=showCate&cateId=2">Rifle</a></li>
+        <li><a href="/products?action=showCate&cateId=3">Shot gun</a></li>
+        <li><a href="/products?action=showCate&cateId=4">Snipe</a></li>
       </ul>
       <!-- /NAV -->
     </div>
@@ -249,10 +250,11 @@
               <td style="padding: 60px 5px;text-align: center">${orderList.get(i).status}</td>
               <td style="padding: 60px 60px;text-align: center">${sessionScope.allTotalBill.get(i).total}$</td>
               <c:if test="${orderList.get(i).status == 'pending'}">
-              <td style="padding: 60px 60px;text-align: center"><a onclick="return confirm('Are you sure to delete your order?')" href="/orders?action=deleteOrder&orderId=${orderList.get(i).id}" class="delete"><i class="fas fa-trash-alt"></i></a></td>
+              <td style="padding: 60px 30px;text-align: center"><a onclick="return confirm('Are you sure to delete your order?')" href="/orders?action=deleteOrder&orderId=${orderList.get(i).id}" class="delete"><i class="fas fa-trash-alt"></i></a>&ensp;<a
+                      href="/orders?action=PayOrder&orderId=${orderList.get(i).id}"><i class="fa fa-dollar"></i></a></td>
               </c:if>
               <c:if test="${orderList.get(i).status == 'paid'}">
-                <td style="padding: 60px 60px;text-align: center"><a  href="" >Comment</a></td>
+                <td style="padding: 60px 30px;text-align: center"><a  href="" ><i class="far fa-comments"></i></a></td>
               </c:if>
             </tr>
         </c:forEach>
